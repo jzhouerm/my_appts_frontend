@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 export default class Dashboard extends Component {
 
+    state = {
+        
+      }
+
   render(){
     return (
-      <Router>
+    //   <Router>
 
+        this.props?.userObj ?
           <div>
-              <h1>Main Page</h1>
+              <h1>User's Dashboard</h1>
               <p>Side-nav #1</p>
               <p>Side-nav #2</p>
-              <p>{this.props}</p>
+              {this.state.test}
 
               <Switch>
 
@@ -20,13 +25,12 @@ export default class Dashboard extends Component {
               </Switch>
              
 
-
-
-
-
         </div>
-      </Router>
-    );
+        : <Redirect to={{
+            pathname: "/login"
+          }}/>
+    //   </Router>
+    )
   }
   
 }
