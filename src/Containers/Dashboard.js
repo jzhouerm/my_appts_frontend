@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import SideNavBar from './SideNavBar';
 
 export default class Dashboard extends Component {
 
@@ -9,27 +10,18 @@ export default class Dashboard extends Component {
 
   render(){
     return (
-    //   <Router>
-
-        this.props?.userObj ?
-          <div>
-              <h1>User's Dashboard</h1>
-              <p>Side-nav #1</p>
-              <p>Side-nav #2</p>
-              {this.state.test}
-
-              <Switch>
-
-                {/* <Route exact path='/dashboard' render={()=> <Clients/>}></Route> */}
-
-              </Switch>
-             
-
-        </div>
-        : <Redirect to={{
-            pathname: "/login"
-          }}/>
-    //   </Router>
+        <>
+            {this.props?.userObj ?
+            <>
+            <h1>{this.props.userObj.first_name}'s Dashboard</h1>
+                    
+                <Switch>
+                    <SideNavBar />
+                </Switch>
+            </>
+                : <Redirect to={{pathname: "/login"}}/>
+            }
+        </>
     )
   }
   
