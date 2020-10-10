@@ -8,10 +8,13 @@ export default class Dashboard extends Component {
         
       }
 
+      
+
   render(){
+      console.log("dashboard state", this.props)
     return (
         <>
-            {this.props?.userObj ?
+            {this.props.userObj ?
             <>
             <h1>{this.props.userObj.first_name}'s Dashboard</h1>
                     

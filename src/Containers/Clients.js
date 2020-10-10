@@ -4,7 +4,7 @@ import '../CSS/ClientTable.css'
 export default class Clients extends Component {
 
     appt = () => {
-        return this.props?.userObj?.appointments?.map(apptObj => {
+        return this.props.userObj.appointments.map(apptObj => {
             return(
                 <>
                 <span>Note: {apptObj.note}</span>
@@ -25,61 +25,58 @@ export default class Clients extends Component {
                 {this.appt()}
             </ul>
             
-
-
-
            
-<div class="table-title">
+<div className="table-title">
 <h3>Data Table</h3>
 </div>
-<table class="table-fill">
+<table className="table-fill">
 <thead>
 <tr>
-<th class="text-left">ID</th>
-<th class="text-left">First Name</th>
-<th class="text-left">Last Name</th>
-<th class="text-left">Phone</th>
-<th class="text-left">Email</th>
+<th className="text-left">ID</th>
+<th className="text-left">First Name</th>
+<th className="text-left">Last Name</th>
+<th className="text-left">Phone</th>
+<th className="text-left">Email</th>
 
 </tr>
 </thead>
-<tbody class="table-hover">
+<tbody className="table-hover">
 <tr>
-<td class="text-left">1</td>
-<td class="text-left">Victoria</td>
-<td class="text-left">Beckham</td>
-<td class="text-left">718-567-1234</td>
-<td class="text-left">vicky@email.com</td>
+<td className="text-left">1</td>
+<td className="text-left">Victoria</td>
+<td className="text-left">Beckham</td>
+<td className="text-left">718-567-1234</td>
+<td className="text-left">vicky@email.com</td>
 
 
 </tr>
 <tr>
-<td class="text-left">1</td>
-<td class="text-left">Victoria</td>
-<td class="text-left">Beckham</td>
-<td class="text-left">718-567-1234</td>
-<td class="text-left">vicky@email.com</td>
+<td className="text-left">1</td>
+<td className="text-left">Victoria</td>
+<td className="text-left">Beckham</td>
+<td className="text-left">718-567-1234</td>
+<td className="text-left">vicky@email.com</td>
 </tr>
 <tr>
-<td class="text-left">1</td>
-<td class="text-left">Victoria</td>
-<td class="text-left">Beckham</td>
-<td class="text-left">718-567-1234</td>
-<td class="text-left">vicky@email.com</td>
+<td className="text-left">1</td>
+<td className="text-left">Victoria</td>
+<td className="text-left">Beckham</td>
+<td className="text-left">718-567-1234</td>
+<td className="text-left">vicky@email.com</td>
 </tr>
 <tr>
-<td class="text-left">1</td>
-<td class="text-left">Victoria</td>
-<td class="text-left">Beckham</td>
-<td class="text-left">718-567-1234</td>
-<td class="text-left">vicky@email.com</td>
+<td className="text-left">1</td>
+<td className="text-left">Victoria</td>
+<td className="text-left">Beckham</td>
+<td className="text-left">718-567-1234</td>
+<td className="text-left">vicky@email.com</td>
 </tr>
 <tr>
-<td class="text-left">1</td>
-<td class="text-left">Victoria</td>
-<td class="text-left">Beckham</td>
-<td class="text-left">718-567-1234</td>
-<td class="text-left">vicky@email.com</td>
+<td className="text-left">1</td>
+<td className="text-left">Victoria</td>
+<td className="text-left">Beckham</td>
+<td className="text-left">718-567-1234</td>
+<td className="text-left">vicky@email.com</td>
 </tr>
 </tbody>
 </table>

@@ -1,7 +1,6 @@
-import { useStateValue } from './Firebase/StateProvider'
-import { StateProvider } from './Firebase/StateProvider';
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+// import moment from 'moment'
 import './App.css'
 import Dashboard from './Containers/Dashboard'
 import TopNavBar from './Containers/TopNavBar'
@@ -17,37 +16,29 @@ export default class App extends Component {
   state = {
     emailLoggedIn: null,
     userObj: null,
-    allUsers: null
   }
 
-  loginHandler = (e) => {
-    debugger
+  loginHandler = (email) => {
     //if login is clicked, fetch for userdata matching email, true=>set email to state and redirect to dashboard, false=>null, stay onlogin page
-    e.preventDefault() 
-    e.persist()
-    console.log("inside loginhandler ", e.target[0].value)
-    let email = e.target[0].value
+    console.log("inside loginhandler ", email)
     this.setState({ emailLoggedIn: email })
-    e.target.reset()        
   }
   
-  componentDidMount(){
-    let x = this.state.emailLoggedIn
-    fetch("http://localhost:3000/users/4/")                
-      .then(resp => resp.json())      
-      .then(userObj => 
-        this.setState({userObj: userObj
-        }))
+  async componentDidMount(){
+    const response = await fetch("http://localhost:3000/users/4/")
+    const json = await response.json()
+    this.setState({userObj: json})
         // {let user = allUsers.find(obj => obj.email === x)
         //   {user ? <Redirect to={{pathname: "/dashboard"}}/> : <Redirect to={{pathname: "/dashboard"}}/> }})
+  }
 
-  }    
 
   render(){
     console.log("App.js state:", this.state)
     return (
       <Router>
         <div className="mainContainer">
+        {/* {this.getUsersData()} */}
 
           <div className="App">
             <TopNavBar/>
