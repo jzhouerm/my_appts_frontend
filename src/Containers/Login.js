@@ -13,9 +13,9 @@ export default class Login extends Component {
                         <form id="login-form" onSubmit = {this.props.loginHandler}>
                         <input type="text" placeholder="Email" onChange = {this.props.changeHandler}></input>
                         <input type="password" placeholder="Password" onChange = {this.props.changeHandler}></input>
-                        {/* <NavLink to="/dashboard"> */}
+                        <NavLink to="/dashboard">
                             <button type="submit" id="login-button">Log in</button>
-                        {/* </NavLink> */}
+                        </NavLink>
                         </form>
                 </div>
             </div>

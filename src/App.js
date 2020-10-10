@@ -1,10 +1,12 @@
+import { useStateValue } from './Firebase/StateProvider'
+import { StateProvider } from './Firebase/StateProvider';
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import './App.css'
 import Dashboard from './Containers/Dashboard'
 import TopNavBar from './Containers/TopNavBar'
-
-// import SideNavBar from './Containers/SearchBar';
+import Clients from './Containers/Clients'
+import SideNavBar from './Containers/SideNavBar';
 // import SearchBar from './Containers/SearchBar';
 import Login from "./Containers/Login";
 // import Register from "./Containers/Register";
@@ -19,6 +21,7 @@ export default class App extends Component {
   }
 
   loginHandler = (e) => {
+    debugger
     //if login is clicked, fetch for userdata matching email, true=>set email to state and redirect to dashboard, false=>null, stay onlogin page
     e.preventDefault() 
     e.persist()
@@ -30,12 +33,13 @@ export default class App extends Component {
   
   componentDidMount(){
     let x = this.state.emailLoggedIn
-    fetch("http://localhost:3000/users/")                
+    fetch("http://localhost:3000/users/4/")                
       .then(resp => resp.json())      
-
-      .then(allUsers => {
-        let user = allUsers.find(obj => obj.email === x)
-          {user ? <Redirect to={{pathname: "/dashboard"}}/> : <Redirect to={{pathname: "/dashboard"}}/> }})
+      .then(userObj => 
+        this.setState({userObj: userObj
+        }))
+        // {let user = allUsers.find(obj => obj.email === x)
+        //   {user ? <Redirect to={{pathname: "/dashboard"}}/> : <Redirect to={{pathname: "/dashboard"}}/> }})
 
   }    
 
@@ -60,6 +64,11 @@ export default class App extends Component {
                 <Login
                   userObj={this.state.userObj} 
                   loginHandler={this.loginHandler}
+                />} />
+
+                <Route path="/clients" render={() => 
+                <Clients
+                  userObj={this.state.userObj} 
                 />} />
 
               </Switch>
