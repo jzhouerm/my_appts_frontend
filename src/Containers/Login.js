@@ -7,29 +7,36 @@ export default class Login extends Component {
         email: null
     }
 
-    loginHandler =(e) =>{
-        e.preventDefault()
+    // loginHandler =(e) =>{
+    //     e.preventDefault()
+    //     e.persist()
+    //     // console.log("inside login ", e.target[0].value)
+    //     this.props.loginHandler(e.target[0].value)
+    //     e.target.reset()        
+
+    // }
+
+    changeHandler =(e) =>{
         e.persist()
         // console.log("inside login ", e.target[0].value)
-        this.props.loginHandler(e.target[0].value)
-        e.target.reset()        
+        this.props.loginHandler(e.target.value)
 
     }
 
 
     render() {
-    console.log("login props", this.props)
+    // console.log("login props", this.props)
         return (
             <>
             <div className="login-wrapper">
                 <div className="login-container">
-                        <h1>Log in</h1>
+                        <h1>Sign in</h1>
                         <form id="login-form" onSubmit = {this.loginHandler}>
-                        <input type="text" placeholder="Email" onChange = {this.props.changeHandler}></input>
-                        <input type="password" placeholder="Password" onChange = {this.props.changeHandler}></input>
-                        {/* <NavLink to="/dashboard"> */}
+                        <input type="text" placeholder="✉️ Email" onChange = {this.changeHandler}></input>
+                        <input type="password" placeholder="🔒Password" onChange = {this.changeHandler}></input>
+                        <NavLink to="/dashboard">
                             <button type="submit" id="login-button">Log in</button>
-                        {/* </NavLink> */}
+                        </NavLink>
                         </form>
                 </div>
             </div>
