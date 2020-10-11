@@ -1,12 +1,10 @@
 import React from 'react'
-import {
-    // BrowserRouter as Router,
-    Link
-    // Route,
-    // Switch,
-  } from 'react-router-dom';
+// import '../CSS/bootstrap-theme.css'
+// import '../CSS/bootstrap-theme.min.css'
+import '../CSS/Pagination.css'
+// import '../CSS/bootstrap.min.css'
 
-const Pagination = ({ clientsPerPage, totalClients, clients}) => {
+const Pagination = ({ clientsPerPage, totalClients, clients, paginate }) => {
     const pageNumbers = []
 // debugger
 // if index is less than or equal to totalClients divided by clientsPerPage, increment i, Math.ceil rounds up
@@ -16,11 +14,11 @@ const Pagination = ({ clientsPerPage, totalClients, clients}) => {
     return (
         <nav>
             <ul className="pagination">
-                {pageNumbers.map(number => (
-                    <li key={number} className="page-item">
-                        <Link className='page-link'>
-                            {number}
-                        </Link>
+                {pageNumbers.map(pageNumber => (
+                    <li key={pageNumber} className="page-item">
+                        <a onClick={() => paginate(pageNumber)} className='page-link'>
+                            {pageNumber}
+                        </a>
                     </li>
                 ))}
             </ul>

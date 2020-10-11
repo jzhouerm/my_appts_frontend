@@ -10,7 +10,9 @@ class TopNavBar extends React.Component {
       return (
         <div className="nav-container">
             <nav className="navbar">
-                <h1 id="navbar-logo">My Project Manager</h1>
+                {/* <h1 id="navbar-logo">My Clients</h1> */}
+                <h1 className="logo-name">My Clients</h1>
+
                 <div className="menu-toggle" id="mobile-menu">
                 {/* <NavLink to="/menu" exact><span className="bar">toggle menu</span></NavLink>
                 <NavLink to="/menu" exact><span className="bar">toggle menu</span></NavLink> */}

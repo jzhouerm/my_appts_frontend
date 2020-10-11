@@ -17,6 +17,11 @@
 
 }
 
+.logo-name{
+  font-family: 'Homemade Apple', cursive;
+  color: white;
+}
+
 .nav-container{
   width: 100%;
   background-color: var(--darkgray);

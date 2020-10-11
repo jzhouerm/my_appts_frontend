@@ -40,9 +40,6 @@ export default class Dashboard extends Component {
                 <h1>{this.state.userObj.first_name}'s Dashboard</h1>
                 <SideNavBar />
                         
-        
-
-
                 <Switch>
 
                     <Route path="/clients" render={() => 
@@ -54,9 +51,7 @@ export default class Dashboard extends Component {
 
                 
             </Router>
-
-
-                : <Redirect to={{pathname: "/login"}}/>
+            : <Redirect to={{pathname: "/login"}}/>
             }
             </>
     )
