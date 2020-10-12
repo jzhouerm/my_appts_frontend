@@ -18,8 +18,12 @@
 }
 
 .logo-name{
-  font-family: 'Homemade Apple', cursive;
+  /* font-family: 'Homemade Apple', cursive; */
+  font-family: 'Cinzel', serif;
+  font-size: xx-large;
   color: white;
+  /* color: var(--brightred) */
+
 }
 
 .nav-container{

@@ -1,10 +1,7 @@
 import React from 'react'
 
 const ClientCards = ({ clients, loading }) => {
-
-    if(loading) {
-        return <h2>Loading...</h2>
-    }
+    // debugger
 
     return (
         <>

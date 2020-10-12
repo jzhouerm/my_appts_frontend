@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
+import ApptsContainer from './ApptsContainer'
 
 
 export default class Dashboard extends Component {
@@ -44,6 +45,11 @@ export default class Dashboard extends Component {
 
                     <Route path="/clients" render={() => 
                     <ClientsContainer
+                    userObj={this.state.userObj} 
+                    />} />
+
+                    <Route path="/appointments" render={() => 
+                    <ApptsContainer
                     userObj={this.state.userObj} 
                     />} />
 
