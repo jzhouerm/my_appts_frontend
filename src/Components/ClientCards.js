@@ -19,7 +19,7 @@ const ClientCards = ({ clients, loading }) => {
 
                     <tbody className="table-hover">
                             {clients.map(client => (
-                                <tr>
+                                <tr key={client.id}>
                                     <td className="text-left">{client.id}</td>
                                     <td className="text-left">{client.first_name}</td>
                                     <td className="text-left">{client.last_name}</td>

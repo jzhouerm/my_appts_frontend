@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import '../CSS/ClientTable.css'
-import ClientCards from '../Components/ClientCards'
+import ApptCards from '../Components/ApptCards'
 import Pagination from '../Components/Pagination'
  
 const ApptsContainer = (props) => {
-    // Get current clients
-    const [clients, setClients] = useState(props.userObj.clients)
+    // Get current appts
+    const [appts] = useState(props.userObj.appointments)
+    const [userObj] = useState(props.userObj)
     const [loading, setLoading] = useState([true])
     const [currentPage, setCurrentPage] = useState([1])
-    const[clientsPerPage] = useState(10)   //# of items per page
+    const[apptsPerPage] = useState(10)   //# of items per page
 
     //Change page (pageNumber is passed in from Pagination.js ln 21)
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-    const indexOfLastClient = currentPage * clientsPerPage      //1 X 10
-    const indexOfFirstClient = indexOfLastClient - clientsPerPage  
-    const currentClients = clients.slice(indexOfFirstClient, indexOfLastClient)  //get state of current clients and pass in
+    const indexOfLastAppt = currentPage * apptsPerPage      //1 X 10
+    const indexOfFirstAppt = indexOfLastAppt - apptsPerPage  
+    const currentAppts = appts.slice(indexOfFirstAppt, indexOfLastAppt)  //get state of current appts and pass in
 // debugger
     return (
         
         <>
             <div className="table-title">
-                <h3>My Clients</h3>
+                <h3>My Appointments</h3>
             </div>
-            <ClientCards clients={currentClients} loading={loading} />
-            <Pagination clientsPerPage={clientsPerPage} totalClients={clients.length} clients={clients} paginate={paginate}/>
+            <ApptCards userObj={userObj} appts={currentAppts} loading={loading} />
+            <Pagination objectsPerPage={apptsPerPage} totalObjects={appts.length} objects={appts} paginate={paginate}/>
         </>
     )
      

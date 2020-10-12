@@ -11,6 +11,7 @@ export default class SideNavBar extends React.Component {
         <NavLink to="/dashboard" exact><li className="nav-links">My Dashboard</li></NavLink>
         <NavLink to="/clients" exact><li className="nav-links">My Clients</li></NavLink>
         <NavLink to="/appointments" exact><li className="nav-links">My Appointments</li></NavLink>
+        <NavLink to="/newclient" exact><li className="nav-links">New Client</li></NavLink>
 
       </div>
       </>

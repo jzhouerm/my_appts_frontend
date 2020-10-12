@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
 import ApptsContainer from './ApptsContainer'
-
+import NewClientForm from '../Containers/NewClientForm'
 
 export default class Dashboard extends Component {
 
@@ -28,6 +28,26 @@ export default class Dashboard extends Component {
             this.setState({userObj: userObj
             }))
       }
+    
+    clientSubmitHandler = (newClient) => {
+        console.log("inside clientSubmitHandler", newClient, this.state.userObj)
+        const obj = {first_name: newClient.first_name, last_name: newClient.last_name, phone: newClient.phone, email: newClient.email}
+        const options = {
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "accept": "application/json"
+            },
+          body: JSON.stringify(obj)
+        }
+      
+          fetch("http://localhost:3000/clients/", options)
+          .then(resp => resp.json())
+          .then(data => {
+            console.log("posted new client", data)
+          })
+        
+    }
 
   render(){
       console.log("dashboard props", this.props) //✅"email@email.com"
@@ -43,14 +63,21 @@ export default class Dashboard extends Component {
                         
                 <Switch>
 
-                    <Route path="/clients" render={() => 
+                    <Route path="/clients" render={(renderProps) => 
                     <ClientsContainer
-                    userObj={this.state.userObj} 
+                    userObj={this.state.userObj}
+                    {...renderProps}
                     />} />
 
                     <Route path="/appointments" render={() => 
                     <ApptsContainer
                     userObj={this.state.userObj} 
+                    />} />
+
+                    <Route path="/newclient" render={() => 
+                    <NewClientForm
+                    userObj={this.state.userObj} 
+                    clientSubmitHandler={this.clientSubmitHandler}
                     />} />
 
                 </Switch>

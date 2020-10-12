@@ -5,6 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ## Resources Used
+
+Moment.js
+npm i moment --save
+
+
 .babelrc config
 https://www.valentinog.com/blog/await-react/
 

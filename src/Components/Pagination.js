@@ -4,11 +4,11 @@ import React from 'react'
 // import '../CSS/Pagination.css'
 // import '../CSS/bootstrap.min.css'
 
-const Pagination = ({ clientsPerPage, totalClients, clients, paginate }) => {
+const Pagination = ({ objectsPerPage, totalObjects, objects, paginate }) => {
     const pageNumbers = []
 // debugger
-// if index is less than or equal to totalClients divided by clientsPerPage, increment i, Math.ceil rounds up
-    for( let i = 1; i <= Math.ceil(totalClients / clientsPerPage); i++){
+// if index is less than or equal to totalObjects divided by clientsPerPage, increment i, Math.ceil rounds up
+    for( let i = 1; i <= Math.ceil(totalObjects / objectsPerPage); i++){
         pageNumbers.push(i)
     }
     return (
