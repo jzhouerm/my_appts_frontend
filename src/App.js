@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom
 import './App.css'
 import Dashboard from './Containers/Dashboard'
 import TopNavBar from './Containers/TopNavBar'
-import SideNavBar from './Containers/SideNavBar';
 // import SearchBar from './Containers/SearchBar';
 import Login from "./Containers/Login";
 // import Register from "./Containers/Register";

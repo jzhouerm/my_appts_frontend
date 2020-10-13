@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 
 export default class NewClientForm extends Component {
-
+debugger
     state = {
-        
         first_name: "",
         last_name: "",
         phone: "",
-        email: ""
+        email: "",
     }
 
     clientChangeHandler = (e) => {
@@ -30,13 +29,14 @@ export default class NewClientForm extends Component {
     render() {
         return (
                 <>
+                <h1>Add a new client:</h1>
                 <br />
                 <form onSubmit={this.clientSubmitHandler}>
-                    <h2>Add a new client:</h2>
-                    <p><input class="" name="first_name" placeholder="First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} /></p>
-                    <p><input class="" name="last_name" placeholder="Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/></p>
-                    <p><input class="" name="phone" placeholder="Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/></p>
-                    <p><input class="" name="email" placeholder="Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/></p>
+                    <h2>Client information:</h2>
+                    <p><input className="" name="first_name" placeholder="First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} /></p>
+                    <p><input className="" name="last_name" placeholder="Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/></p>
+                    <p><input className="" name="phone" placeholder="Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/></p>
+                    <p><input className="" name="email" placeholder="Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/></p>
             
                     <p>
                         <input className="form-button" type="submit" />

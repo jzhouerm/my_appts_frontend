@@ -3,7 +3,9 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
 import ApptsContainer from './ApptsContainer'
-import NewClientForm from '../Containers/NewClientForm'
+import NewClientForm from './NewClientForm'
+import NewServiceForm from './NewServiceForm'
+
 
 export default class Dashboard extends Component {
 
@@ -27,7 +29,7 @@ export default class Dashboard extends Component {
             // console.log(userObj))
             this.setState({userObj: userObj
             }))
-      }
+    }
     
     clientSubmitHandler = (newClient) => {
         console.log("inside clientSubmitHandler", newClient, this.state.userObj)
@@ -49,9 +51,29 @@ export default class Dashboard extends Component {
         
     }
 
+    serviceSubmitHandler = (newService) => {
+        console.log("inside serviceSubmitHandler", newService)
+        const obj = {name: newService.name, description: newService.description, amount: newService.amount}
+        const options = {
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "accept": "application/json"
+            },
+          body: JSON.stringify(obj)
+        }
+      
+          fetch("http://localhost:3000/services/", options)
+          .then(resp => resp.json())
+          .then(data => {
+            console.log("posted new client", data)
+          })
+        
+    }
+
   render(){
-      console.log("dashboard props", this.props) //✅"email@email.com"
-      console.log("dashboard state", this.state) //❌
+    //   console.log("dashboard props", this.props) //✅"email@email.com"
+    //   console.log("dashboard state", this.state) //❌
     // debugger
     return (
         <>
@@ -59,7 +81,7 @@ export default class Dashboard extends Component {
             <Router>
             
                 <h1>{this.state.userObj.first_name}'s Dashboard</h1>
-                <SideNavBar />
+                <SideNavBar userObj={this.state.userObj}/>
                         
                 <Switch>
 
@@ -78,6 +100,12 @@ export default class Dashboard extends Component {
                     <NewClientForm
                     userObj={this.state.userObj} 
                     clientSubmitHandler={this.clientSubmitHandler}
+                    />} />
+
+                    <Route path="/newservice" render={() => 
+                    <NewServiceForm
+                    userObj={this.state.userObj} 
+                    serviceSubmitHandler={this.serviceSubmitHandler}
                     />} />
 
                 </Switch>
