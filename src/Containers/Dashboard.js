@@ -91,7 +91,7 @@ export default class Dashboard extends Component {
                     {...renderProps}
                     />} />
 
-                    <Route path="/appointments" render={() => 
+                    <Route path="/tasks" render={() => 
                     <ApptsContainer
                     userObj={this.state.userObj} 
                     />} />

@@ -63,7 +63,7 @@ const ApptsContainer = (props) => {
         
         <>
             <div className="table-title">
-                <h3>My Appointments</h3>
+                <h3>My Tasks</h3>
             </div>
             {/* <NewApptForm userObj={props.userObj} apptSubmitHandler={apptSubmitHandler}/> */}
             <NewApptForm serviceObjs={serviceObjs} clientObjs={clientObjs} apptSubmitHandler={apptSubmitHandler}/>

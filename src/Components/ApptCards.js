@@ -14,6 +14,7 @@ const ApptCards = ({ appts }) => {
                                 <th className="text-left">Time</th>
                                 <th className="text-left">Client Name</th>
                                 <th className="text-left">Email</th>
+                                <th className="text-left">Note</th>
 
                             </tr>
                     </thead>
@@ -26,6 +27,8 @@ const ApptCards = ({ appts }) => {
                                     <td className="text-left">{moment(appt.start).format("LT")}</td>
                                     <td className="text-left">{appt.client_first_name + " " + appt.client_last_name}</td>
                                     <td className="text-left">{appt.client_email}</td>
+                                    <td className="text-left">{appt.note}</td>
+
                                 </tr>
                             ))} 
                     </tbody>
