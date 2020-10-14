@@ -6,65 +6,65 @@ import NewProjectForm from './NewProjectForm'
  
 const ProjectsContainer = (props) => {
     // Get ALL projects and clients from DB to create project/project
-    // const [clientObjs, setClientObjs] = useState([])
+    const [clientObjs, setClientObjs] = useState([])
 
     // Get current projects
-    // const [projects, setProjects] = useState([props.userObj.projects])
-    // const [userObj] = useState(props.userObj)
-    // const [loading, setLoading] = useState([true])
-    // const [currentPage, setCurrentPage] = useState([1])
-    // const[projectsPerPage] = useState(10)   //# of items per page
+    const [projects, setProjects] = useState([props.userObj.projects])
+    const [userObj] = useState(props.userObj)
+    const [loading, setLoading] = useState([true])
+    const [currentPage, setCurrentPage] = useState([1])
+    const[projectsPerPage] = useState(10)   //# of items per page
 
-    // //Change page (pageNumber is passed in from Pagination.js ln 21)
-    // const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    //Change page (pageNumber is passed in from Pagination.js ln 21)
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-    // const indexOfLastProject = currentPage * projectsPerPage      //1 X 10
-    // const indexOfFirstProject = indexOfLastProject - projectsPerPage  
-    // const currentProjects = projects?.slice(indexOfFirstProject, indexOfLastProject)  //get state of current projects and pass in
+    const indexOfLastProject = currentPage * projectsPerPage      //1 X 10
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage  
+    const currentProjects = projects?.slice(indexOfFirstProject, indexOfLastProject)  //get state of current projects and pass in
 
 
-    // useEffect( () => {
-    //     async function fetchData() {
-    //     const res1 = await fetch("http://localhost:3000/clients/")
-    //     res1           
-    //         .json()
-    //         .then(clientObjs => setClientObjs(clientObjs))
+    useEffect( () => {
+        async function fetchData() {
+        const res1 = await fetch("http://localhost:3000/clients/")
+        res1           
+            .json()
+            .then(clientObjs => setClientObjs(clientObjs))
 
-    //     const res2 = await fetch("http://localhost:3000/projects/")
-    //     res2            
-    //         .json()
-    //         .then(projects => setProjects(projects))
-    //     }fetchData()
-    // },[])
+        const res2 = await fetch("http://localhost:3000/projects/")
+        res2            
+            .json()
+            .then(projects => setProjects(projects))
+        }fetchData()
+    }, [])
 
-    // const projectSubmitHandler = (newProject) => {
-    //     // console.log("inside projectSubmitHandler", newProject)
-    //     let newArray = [newProject,...projects]
-    //     console.log("old", newArray)
-    //     setProjects(newArray)
-    //     console.log("new", newArray)
-    //     const obj = {
-    //     user_id: userObj.id,
-    //     client_id: newProject.client_id, 
-    //     name: newProject.name, 
-    //     description: newProject.description,
-    //     amount: newProject.amount,
-    //     start: newProject.start, 
-    //     end: newProject.end}
+    const projectSubmitHandler = (newProject) => {
+        // console.log("inside projectSubmitHandler", newProject)
+        let newArray = [newProject,...projects]
+        console.log("old", newArray)
+        setProjects(newArray)
+        console.log("new", newArray)
+        const obj = {
+        user_id: userObj.id,
+        client_id: newProject.client_id, 
+        name: newProject.name, 
+        description: newProject.description,
+        amount: newProject.amount,
+        start: newProject.start, 
+        end: newProject.end}
 
-    //     const options = {
-    //         "method": "POST",
-    //         "headers": {
-    //           "Content-Type": "application/json",
-    //           "accept": "application/json"
-    //         },
-    //       body: JSON.stringify(obj)
-    //     }
+        const options = {
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "accept": "application/json"
+            },
+          body: JSON.stringify(obj)
+        }
         
-    //     fetch("http://localhost:3000/projects/", options)
-    //     .then(res => res.json())
-    //     .then(proj => setProjects([proj,...projects]))
-    // }
+        fetch("http://localhost:3000/projects/", options)
+        .then(res => res.json())
+        .then(proj => setProjects([proj,...projects]))
+    }
 
 
 // debugger
@@ -74,9 +74,9 @@ const ProjectsContainer = (props) => {
             <div className="table-title">
                 <h3>My Projects</h3>
             </div>
-            {/* <NewProjectForm projects={projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={projectSubmitHandler}/> */}
-            <ProjectCards userObj={props.userObj} projects={props.userObj.projects} />
-            {/* <Pagination objectsPerPage={projectsPerPage} totalObjects={projects.length} objects={projects} paginate={paginate}/> */}
+            <NewProjectForm projects={projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={projectSubmitHandler}/>
+            <ProjectCards userObj={props.userObj} projects={projects} clients={clientObjs}/>
+            <Pagination objectsPerPage={projectsPerPage} totalObjects={projects.length} objects={projects} paginate={paginate}/>
 
             
         </>

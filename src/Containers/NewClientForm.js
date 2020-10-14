@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export default class NewClientForm extends Component {
-debugger
     state = {
         first_name: "",
         last_name: "",

@@ -3,8 +3,9 @@ import moment from 'moment'
 import {NavLink} from "react-router-dom";
 
 
-const ProjectCards = ({ projects }) => {
+const ProjectCards = ({ projects, clientObjs }) => {
 // debugger
+//getting new data from useEffect in ProjectsContainer
     return (
         <>
                 <table className="table-fill">

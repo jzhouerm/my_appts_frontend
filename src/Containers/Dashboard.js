@@ -12,13 +12,14 @@ export default class Dashboard extends Component {
 
     state = {
         emailLoggedin: null,    //❌ Email typed by user
-        userObj: []           //❌ HARD-CODED...fix lines 14-20
+        userObj: [],           //❌ HARD-CODED...fix lines 14-20
       }
 
     // async componentDidMount(){
     //     const response = await fetch("http://localhost:3000/users/")
     //     const json = await response.json()
     //     const currentUser = await json.find(obj => obj.email === this.props.emailLoggedIn)
+    
     //     this.setState({userObj: currentUser}) //this is not running
     //     // debugger
     // }
@@ -28,7 +29,8 @@ export default class Dashboard extends Component {
           .then(resp => resp.json())      
           .then(userObj => 
             // console.log(userObj))
-            this.setState({userObj: userObj
+            this.setState({
+              userObj: userObj
             }))
     }
     
