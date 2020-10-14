@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 
-const ApptCards = ({ appts }) => {
+const TaskCards = ({ tasks }) => {
 // debugger
     return (
         <>
@@ -19,13 +19,13 @@ const ApptCards = ({ appts }) => {
                     </thead>
 
                     <tbody className="table-hover">
-                            {appts.map(appt => (
-                                <tr key={appt.id}>
-                                    <td className="text-left">{appt.id}</td>
-                                    <td className="text-left">{moment(appt.start).format("MMMM Do YYYY")}{" "}</td>
-                                    <td className="text-left">{moment(appt.start).format("LT")}</td>
-                                    <td className="text-left">{appt.client_first_name + " " + appt.client_last_name}</td>
-                                    <td className="text-left">{appt.client_email}</td>
+                            {tasks.map(task => (
+                                <tr key={task.id}>
+                                    <td className="text-left">{task.id}</td>
+                                    <td className="text-left">{moment(task.start).format("MMMM Do YYYY")}{" "}</td>
+                                    <td className="text-left">{moment(task.start).format("LT")}</td>
+                                    <td className="text-left">{task.client_first_name + " " + task.client_last_name}</td>
+                                    <td className="text-left">{task.client_email}</td>
                                 </tr>
                             ))} 
                     </tbody>
@@ -40,4 +40,4 @@ const ApptCards = ({ appts }) => {
 
 
 
-export default ApptCards
+export default TaskCards
