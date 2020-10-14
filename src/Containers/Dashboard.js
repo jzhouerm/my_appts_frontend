@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
-import ApptsContainer from './ApptsContainer'
+import TasksContainer from './ProjectsContainer'
 import NewClientForm from './NewClientForm'
-import NewServiceForm from './NewServiceForm'
+import ProjectsContainer from './ProjectsContainer';
+import ProjectShow from './ProjectShow'
 
 
 export default class Dashboard extends Component {
@@ -23,7 +24,7 @@ export default class Dashboard extends Component {
     // }
 
     componentDidMount(){
-        fetch("http://localhost:3000/users/4/")                
+        fetch("http://localhost:3000/users/3/")                
           .then(resp => resp.json())      
           .then(userObj => 
             // console.log(userObj))
@@ -51,30 +52,22 @@ export default class Dashboard extends Component {
         
     }
 
-    serviceSubmitHandler = (newService) => {
-        console.log("inside serviceSubmitHandler", newService)
-        const obj = {name: newService.name, description: newService.description, amount: newService.amount}
-        const options = {
-            "method": "POST",
-            "headers": {
-              "Content-Type": "application/json",
-              "accept": "application/json"
-            },
-          body: JSON.stringify(obj)
-        }
-      
-          fetch("http://localhost:3000/services/", options)
-          .then(resp => resp.json())
-          .then(data => {
-            console.log("posted new client", data)
-          })
-        
+    deleteHandler =(id)=>{
+      console.log("deletehandler", id)
+
+      fetch(`http://localhost:3000/projects/${id}`, {
+      method: "DELETE"
+      })
     }
+
+    editHandler =()=> {
+      console.log("edithandler")
+    }
+
 
   render(){
     //   console.log("dashboard props", this.props) //✅"email@email.com"
     //   console.log("dashboard state", this.state) //❌
-    // debugger
     return (
         <>
         {this.state.userObj ?
@@ -91,8 +84,8 @@ export default class Dashboard extends Component {
                     {...renderProps}
                     />} />
 
-                    <Route path="/appointments" render={() => 
-                    <ApptsContainer
+                    <Route path="/activites" render={() => 
+                    <TasksContainer
                     userObj={this.state.userObj} 
                     />} />
 
@@ -102,11 +95,19 @@ export default class Dashboard extends Component {
                     clientSubmitHandler={this.clientSubmitHandler}
                     />} />
 
-                    <Route path="/newservice" render={() => 
-                    <NewServiceForm
+                    <Route exact path="/projects/:id" render={(renderProps) =>
+                    <ProjectShow 
+                    userObj={this.state.userObj}
+                    deleteHandler={this.deleteHandler}
+                    editHandler={this.editHandler}
+                    {...renderProps}/>
+                    }/>
+                    
+                    <Route path="/projects" render={() => 
+                    <ProjectsContainer
                     userObj={this.state.userObj} 
-                    serviceSubmitHandler={this.serviceSubmitHandler}
                     />} />
+
 
                 </Switch>
 

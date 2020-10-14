@@ -24,3 +24,6 @@ https://medium.com/better-programming/how-to-fetch-data-from-an-api-with-react-h
 
 Full Calendar Library
 https://fullcalendar.io/
+
+Updating Record in rails console
+https://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html
