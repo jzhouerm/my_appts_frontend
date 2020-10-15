@@ -14,6 +14,7 @@ const TaskCards = ({ tasks }) => {
                                 <th className="text-left">Time</th>
                                 <th className="text-left">Client Name</th>
                                 <th className="text-left">Email</th>
+                                <th className="text-left">Note</th>
 
                             </tr>
                     </thead>
