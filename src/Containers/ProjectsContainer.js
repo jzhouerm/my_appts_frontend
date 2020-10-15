@@ -5,6 +5,8 @@ import ProjectCards from '../Components/ProjectCards'
 import Pagination from '../Components/Pagination'
 import NewProjectForm from './NewProjectForm'
 import ProjectShow from './ProjectShow'
+// import ProjectsContainer from './ProjectsContainer';
+
  
 const ProjectsContainer = (props) => {
     // Get ALL projects and clients from DB to create project/project
@@ -41,10 +43,6 @@ const ProjectsContainer = (props) => {
 
     const projectSubmitHandler = (newProject) => {
         // console.log("inside projectSubmitHandler", newProject)
-        let newArray = [newProject,...projects]
-        console.log("old", newArray)
-        setProjects(newArray)
-        console.log("new", newArray)
         const obj = {
         user_id: userObj.id,
         client_id: newProject.client_id, 
@@ -65,7 +63,10 @@ const ProjectsContainer = (props) => {
         
         fetch("http://localhost:3000/projects/", options)
         .then(res => res.json())
-        .then(proj => setProjects([proj,...projects]))
+        .then(proj => {
+            props.passProject(proj)
+            setProjects([proj,...projects])}
+                )
     }
 
 
@@ -80,23 +81,25 @@ const ProjectsContainer = (props) => {
 
 
 
-    deleteHandler =(id)=>{
-        console.log("deletehandler", id)
+    // const deleteHandler =(id)=>{
+    //     console.log("deletehandler", id)
   
-        fetch(`http://localhost:3000/projects/${id}`, {
-        method: "DELETE"
-        })
-      }
+    //     fetch(`http://localhost:3000/projects/${id}`, {
+    //     method: "DELETE"
+    //     })
+    //   }
   
-      editHandler =()=> {
-        console.log("edithandler")
-      }
+    // const editHandler =()=> {
+    //     console.log("edithandler")
+    //   }
 
 
 // debugger
     return (
         
-        <>
+        <> 
+
+
             <div className="table-title">
                 <h3>My Projects</h3>
             </div>
@@ -104,13 +107,8 @@ const ProjectsContainer = (props) => {
             <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
             <Pagination objectsPerPage={projectsPerPage} totalObjects={projects.length} objects={projects} paginate={paginate}/>
 
-            <Route exact path="/projects/:id" render={(renderProps) =>
-                    <ProjectShow 
-                    userObj={this.state.userObj}
-                    deleteHandler={this.deleteHandler}
-                    editHandler={this.editHandler}
-                    {...renderProps}/>
-                    }/>
+
+
         </>
     )
      

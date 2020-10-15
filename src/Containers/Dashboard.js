@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
 
     state = {
         emailLoggedin: null,    //❌ Email typed by user
-        userObj: [],           //❌ HARD-CODED...fix lines 14-20
+        userObj: []           //❌ HARD-CODED...fix lines 14-20
       }
 
     // async componentDidMount(){
@@ -49,7 +49,11 @@ export default class Dashboard extends Component {
           fetch("http://localhost:3000/clients/", options)
           .then(resp => resp.json())
           .then(data => {
-            console.log("posted new client", data)
+            const newUserObj = this.state.userObj
+            newUserObj.clients.unshift(data)
+            // debugger
+            this.setState({userObj: newUserObj})
+            // console.log("posted new client", data)
           })
         
     }
@@ -64,6 +68,13 @@ export default class Dashboard extends Component {
 
     editHandler =()=> {
       console.log("edithandler")
+    }
+
+    passProject = (newProject) => {
+      const newUserObj = this.state.userObj
+      newUserObj.projects.push(newProject)
+      // debugger
+      this.setState({userObj: newUserObj})
     }
 
 
@@ -98,16 +109,17 @@ export default class Dashboard extends Component {
                     />} />
 
                     {/* can't route to projectShow after creating a new project because userObj doesn't include new project */}
-                    {/* <Route exact path="/projects/:id" render={(renderProps) =>
+                    <Route exact path="/projects/:id" render={(renderProps) =>
                     <ProjectShow 
                     userObj={this.state.userObj}
                     deleteHandler={this.deleteHandler}
                     editHandler={this.editHandler}
                     {...renderProps}/>
-                    }/> */}
+                    }/> */
                     
                     <Route path="/projects" render={() => 
                     <ProjectsContainer
+                    passProject={this.passProject}
                     userObj={this.state.userObj} 
                     />} />
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class NewClientForm extends Component {
     state = {
@@ -21,7 +22,7 @@ export default class NewClientForm extends Component {
             last_name: "",
             phone: "",
             email: ""
-        })
+        }, <Redirect to="/projects"/>)
     }
 
 
