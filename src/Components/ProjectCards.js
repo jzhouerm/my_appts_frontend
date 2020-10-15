@@ -6,6 +6,9 @@ import {NavLink} from "react-router-dom";
 const ProjectCards = ({ projects, clientObjs }) => {
 // debugger
 //getting new data from useEffect in ProjectsContainer
+const currencyFormat = (num) =>{
+    return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+ }
     return (
         <>
                 <table className="table-fill">
@@ -30,7 +33,7 @@ const ProjectCards = ({ projects, clientObjs }) => {
                                     <td className="text-left">{moment(project.start).format("MMMM Do YYYY")}{" "}</td>
                                     <td className="text-left">{moment(project.end).format("MMMM Do YYYY")}{" "}</td>
                                     <td className="text-left">{project.status ? "Completed" : "In progress"}</td>
-                                    <td className="text-left">{project.amount - project.paid}</td>
+                                    <td className="text-left">{currencyFormat(project.amount - project.paid)}</td>
                                 </tr>
                             ))} 
                     </tbody>

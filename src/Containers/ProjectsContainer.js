@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react'
 import '../CSS/ClientTable.css'
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ProjectCards from '../Components/ProjectCards'
 import Pagination from '../Components/Pagination'
 import NewProjectForm from './NewProjectForm'
+import ProjectShow from './ProjectShow'
  
 const ProjectsContainer = (props) => {
     // Get ALL projects and clients from DB to create project/project
@@ -67,6 +69,30 @@ const ProjectsContainer = (props) => {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+    deleteHandler =(id)=>{
+        console.log("deletehandler", id)
+  
+        fetch(`http://localhost:3000/projects/${id}`, {
+        method: "DELETE"
+        })
+      }
+  
+      editHandler =()=> {
+        console.log("edithandler")
+      }
+
+
 // debugger
     return (
         
@@ -75,10 +101,16 @@ const ProjectsContainer = (props) => {
                 <h3>My Projects</h3>
             </div>
             <NewProjectForm projects={projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={projectSubmitHandler}/>
-            <ProjectCards userObj={props.userObj} projects={projects} clients={clientObjs}/>
+            <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
             <Pagination objectsPerPage={projectsPerPage} totalObjects={projects.length} objects={projects} paginate={paginate}/>
 
-            
+            <Route exact path="/projects/:id" render={(renderProps) =>
+                    <ProjectShow 
+                    userObj={this.state.userObj}
+                    deleteHandler={this.deleteHandler}
+                    editHandler={this.editHandler}
+                    {...renderProps}/>
+                    }/>
         </>
     )
      

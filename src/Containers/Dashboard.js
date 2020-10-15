@@ -97,13 +97,14 @@ export default class Dashboard extends Component {
                     clientSubmitHandler={this.clientSubmitHandler}
                     />} />
 
-                    <Route exact path="/projects/:id" render={(renderProps) =>
+                    {/* can't route to projectShow after creating a new project because userObj doesn't include new project */}
+                    {/* <Route exact path="/projects/:id" render={(renderProps) =>
                     <ProjectShow 
                     userObj={this.state.userObj}
                     deleteHandler={this.deleteHandler}
                     editHandler={this.editHandler}
                     {...renderProps}/>
-                    }/>
+                    }/> */}
                     
                     <Route path="/projects" render={() => 
                     <ProjectsContainer
