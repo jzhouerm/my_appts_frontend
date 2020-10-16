@@ -6,6 +6,9 @@ import {NavLink} from "react-router-dom";
 const ProjectCards = ({ projects, clientObjs }) => {
 // debugger
 //getting new data from useEffect in ProjectsContainer
+
+
+
 const currencyFormat = (num) =>{
     return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
  }

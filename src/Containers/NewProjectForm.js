@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
 
 export default class NewProjectForm extends Component {
     state = {
@@ -74,7 +75,7 @@ export default class NewProjectForm extends Component {
                     
 
                     <p>
-                        <input className="form-button" type="submit" />
+                    <Button variant="contained" color="primary"type="submit">Add Project</Button>
                     </p>
 
                 </form>

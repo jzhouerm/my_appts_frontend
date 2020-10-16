@@ -33,6 +33,7 @@ const ProjectsContainer = (props) => {
         res1           
             .json()
             .then(clientObjs => setClientObjs(clientObjs))
+            // .then(obj => console.log("clients", obj))
 
         const res2 = await fetch("http://localhost:3000/projects/")
         res2            
@@ -68,37 +69,10 @@ const ProjectsContainer = (props) => {
             setProjects([proj,...projects])}
                 )
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // const deleteHandler =(id)=>{
-    //     console.log("deletehandler", id)
-  
-    //     fetch(`http://localhost:3000/projects/${id}`, {
-    //     method: "DELETE"
-    //     })
-    //   }
-  
-    // const editHandler =()=> {
-    //     console.log("edithandler")
-    //   }
-
-
-// debugger
+    
     return (
         
         <> 
-
 
             <div className="table-title">
                 <h3>My Projects</h3>

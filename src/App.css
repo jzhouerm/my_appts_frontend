@@ -3,6 +3,7 @@
 :root {
   --darkgray: #212329;
   --brightred: #F9243D;
+  --darkpurple: #002984;
   --white: #fff;
   --lightred: #f9433dcc;
 }
@@ -68,12 +69,12 @@
 }
 
 .nav-links:hover {
-  color: var(--brightred);
+  color: var(--lightred);
   transition: all 0.2s ease-out;
 }
 
 .nav-links-btn {
-  background-color: var(--brightred);
+  background-color: var(--lightred);
   padding: 6px 16px;
   border-radius: 4px;
 }

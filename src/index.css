@@ -1,7 +1,21 @@
 /* Added */
-@import url('https://fonts.googleapis.com/css2?family=Anaheim&family=Barlow+Condensed:wght@200&family=Cedarville+Cursive&family=Gudea&family=Homemade+Apple&family=Montserrat:wght@100;200&family=News+Cycle&family=Oswald:wght@200&family=Pompiere&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
+/* @import url('https://fonts.googleapis.com/css2?family=Anaheim&family=Barlow+Condensed:wght@200&family=Cedarville+Cursive&family=Gudea&family=Homemade+Apple&family=Montserrat:wght@100;200&family=News+Cycle&family=Oswald:wght@200&family=Pompiere&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'); */
 /* Added */
+
+/* Added for material-ui*/
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+/* Added for material-ui*/
+
 
 body {
   margin: 0;

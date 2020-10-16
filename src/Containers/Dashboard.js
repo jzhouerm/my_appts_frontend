@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect, withRouter} from "react-router-dom";
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
 import TasksContainer from './ProjectsContainer'
@@ -58,12 +58,15 @@ export default class Dashboard extends Component {
         
     }
 
-    deleteHandler =(id)=>{
+    deleteHandler =(id, history)=>{
       console.log("deletehandler", id)
-
+// debugger
       fetch(`http://localhost:3000/projects/${id}`, {
       method: "DELETE"
-      })
+    })
+      return(
+      history.push("/projects")
+      )
     }
 
     editHandler =()=> {

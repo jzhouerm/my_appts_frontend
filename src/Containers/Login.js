@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 export default class Login extends Component {
     
@@ -34,8 +35,10 @@ export default class Login extends Component {
                         <form id="login-form" onSubmit = {this.loginHandler}>
                         <input type="text" placeholder="✉️ Email" onChange = {this.changeHandler}></input>
                         <input type="password" placeholder="🔒Password" onChange = {this.changeHandler}></input>
+                        <br/>
+                        <br/>
                         <NavLink to="/dashboard">
-                            <button type="submit" id="login-button">Log in</button>
+                            <Button variant="contained" color="primary" type="submit" id="login-button">Log in</Button>
                         </NavLink>
                         </form>
                 </div>
