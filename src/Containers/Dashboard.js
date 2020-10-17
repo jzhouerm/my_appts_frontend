@@ -6,6 +6,7 @@ import TasksContainer from './ProjectsContainer'
 import NewClientForm from './NewClientForm'
 import ProjectsContainer from './ProjectsContainer';
 import ProjectShow from './ProjectShow'
+import MyDash from './MyDash';
 
 
 export default class Dashboard extends Component {
@@ -55,7 +56,6 @@ export default class Dashboard extends Component {
             this.setState({userObj: newUserObj})
             // console.log("posted new client", data)
           })
-        
     }
 
     deleteHandler =(id, history)=>{
@@ -100,13 +100,15 @@ export default class Dashboard extends Component {
                     {...renderProps}
                     />} />
 
-                    <Route path="/activites" render={() => 
-                    <TasksContainer
+                    <Route exact path="/dashboard" render={() => 
+                    <MyDash
                     userObj={this.state.userObj} 
                     />} />
 
                     <Route path="/newclient" render={() => 
+                    // <Redirect to="/projects"/>
                     <NewClientForm
+                    
                     userObj={this.state.userObj} 
                     clientSubmitHandler={this.clientSubmitHandler}
                     />} />

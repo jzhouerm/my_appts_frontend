@@ -4,6 +4,7 @@ import moment from 'moment'
 import UpdateProjectModal from '../Components/UpdateProjectModal'
 import Button from '@material-ui/core/Button';
 import AddTaskForm from '../Components/AddTaskForm'
+import TaskTable from '../Components/TaskTable'
 
 export default class ProjectShow extends Component {
 
@@ -134,11 +135,12 @@ export default class ProjectShow extends Component {
                 <br/>
                 <Button variant="contained" color="primary" onClick={()=>{deleteHandler(this.state.project.id, this.props.history)}}>Delete</Button>
                 <br/>
-                <h2>Project Activity:</h2>
-                <ul>
+                {/* <h2>Project Activity:</h2> */}
+                {/* <ul>
                     {tasks()}
-                </ul>
+                </ul> */}
                 <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/>
+                <TaskTable tasks={this.state.tasks}/>
             </div>
         )
 

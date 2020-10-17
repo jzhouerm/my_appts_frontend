@@ -22,7 +22,7 @@ export default class NewClientForm extends Component {
             last_name: "",
             phone: "",
             email: ""
-        }, <Redirect to="/projects"/>)
+        })
     }
 
 

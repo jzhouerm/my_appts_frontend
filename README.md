@@ -11,6 +11,8 @@ npm i moment --save
 
 Material UI
 npm install @material-ui/core
+npm install material-table
+npm install @material-ui/icons
 https://www.positronx.io/create-react-modal-popup-with-material-ui/
 https://material-ui.com/customization/color/
 
@@ -36,4 +38,6 @@ https://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.ht
 dependent/destroy
 https://stackoverflow.com/questions/20925494/delete-associated-records-on-object-destroy-rails
 
-https://reactrouter.com/web/api/Redirect
+AWS Email
+https://www.youtube.com/watch?v=4o6GCiUX8Xk
+https://www.webmerge.me
