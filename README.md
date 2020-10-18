@@ -15,7 +15,7 @@ npm install material-table
 npm install @material-ui/icons
 https://www.positronx.io/create-react-modal-popup-with-material-ui/
 https://material-ui.com/customization/color/
-
+https://material-table.com/#/docs/features/editable
 
 .babelrc config
 https://www.valentinog.com/blog/await-react/

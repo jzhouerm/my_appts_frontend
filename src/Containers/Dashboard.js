@@ -13,7 +13,8 @@ export default class Dashboard extends Component {
 
     state = {
         emailLoggedin: null,    //❌ Email typed by user
-        userObj: []           //❌ HARD-CODED...fix lines 14-20
+        userObj: [],           //❌ HARD-CODED...fix lines 14-20
+        tasks: []
       }
 
     // async componentDidMount(){
@@ -51,7 +52,7 @@ export default class Dashboard extends Component {
           .then(resp => resp.json())
           .then(data => {
             const newUserObj = this.state.userObj
-            newUserObj.clients.unshift(data)
+            newUserObj.clients.push(data)
             // debugger
             this.setState({userObj: newUserObj})
             // console.log("posted new client", data)
@@ -69,17 +70,42 @@ export default class Dashboard extends Component {
       )
     }
 
-    editHandler =()=> {
-      console.log("edithandler")
+    updateTaskHandler = (updatedTask) => {
+      console.log("inside updateTaskHandler", updatedTask)
+      // debugger
+      const obj = {
+        project_id: updatedTask.project_id,
+        start: updatedTask.start,
+        end: updatedTask.end,
+        note: updatedTask.note,
+      }
+      const options = {
+          "method": "PATCH",
+          "headers": {
+            "Content-Type": "application/json",
+            "accept": "application/json"
+          },
+        body: JSON.stringify(obj)
+      }
+    
+        fetch(`http://localhost:3000/tasks/${updatedTask.id}`, options)
+        .then(resp => resp.json())
+        .then(data => console.log(data)
+        )
     }
 
+    deleteTaskHandler = (rowData) => {
+      console.log("deleteTaskHandler rowData.id", rowData.id)
+      fetch(`http://localhost:3000/tasks/${rowData.id}`, {method: "DELETE"})
+
+      }
+      
     passProject = (newProject) => {
       const newUserObj = this.state.userObj
       newUserObj.projects.push(newProject)
       // debugger
       this.setState({userObj: newUserObj})
     }
-
 
   render(){
     //   console.log("dashboard props", this.props) //✅"email@email.com"
@@ -118,7 +144,8 @@ export default class Dashboard extends Component {
                     <ProjectShow 
                     userObj={this.state.userObj}
                     deleteHandler={this.deleteHandler}
-                    editHandler={this.editHandler}
+                    updateTaskHandler={this.updateTaskHandler}
+                    deleteTaskHandler={this.deleteTaskHandler}
                     {...renderProps}/>
                     }/> */
                     

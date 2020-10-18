@@ -78,14 +78,14 @@ export default class ProjectShow extends Component {
             fetch(`http://localhost:3000/tasks`, options)
             .then(res => res.json())
             .then(newTask => { 
-                console.log("newwArr", this.state.tasks)
+                console.log("newArr", this.state.tasks)
                 let newArr = [...this.state.tasks, newTask]
                 this.setState({tasks: newArr})
                 // console.log(newArr)
                 // this.setState((previousState) => ({ tasks: [...previousState, newTask]}))
             })
     }
-
+    
     render() {
 
         // debugger
@@ -106,6 +106,8 @@ export default class ProjectShow extends Component {
             const currencyFormat = (num) =>{
             return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
          }
+
+
 
          return (
             <div>
@@ -140,7 +142,7 @@ export default class ProjectShow extends Component {
                     {tasks()}
                 </ul> */}
                 <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/>
-                <TaskTable tasks={this.state.tasks}/>
+                <TaskTable updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.state.tasks}/>
             </div>
         )
 
