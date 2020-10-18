@@ -8,10 +8,10 @@ function TaskTable(props) {
     
     const columns=[
         {
-            title:'ID',field: 'id'
+            title:'Activity ID',field: 'id', editable: 'never', value: 'id', width: '5%'
         },
         {
-            title:'Project ID',field: 'project_id'
+            title:'Project ID',field: 'project_id', editable: 'onAdd', value: 'project_id',  width: '5%'
         },
         {
             title:'Start Time', field: 'start',
@@ -27,8 +27,6 @@ function TaskTable(props) {
     ]
 
     const taskMapper =() => {
-        // console.log(moment(tasks[0].start).format("MMMM Do YYYY"))
-        // debugger
     // return tasks.map(task=> [{"id": task.id, "project_id": task.project_id, "note": task.note, "start": moment(task.start).format("MMMM Do YYYY"), "end": moment(task.end).format("MMMM Do YYYY")}]).flat()
     return tasks.map(task=> [{"id": task.id, "project_id": task.project_id, "note": task.note, "start": task.start, "end": task.end}]).flat()
 
@@ -48,8 +46,25 @@ function TaskTable(props) {
         props.deleteTaskHandler(rowData)
     }
 
-    const submitTaskHandler = (event, newTask) => {
-        console.log(newTask)
+    // const submitTaskHandler = (newData) => {
+    //     const newObj = {id: null, project_id: newData.project_id, start: newData.start, end: newData.end, note: newData.note}
+    //     console.log(newObj)
+    //     // debugger
+    //     const newArr = [...tasks, newObj]
+    //     setTasks(newArr)
+    //     console.log("newArr:", newArr, "newData:", newData)
+    //     console.log("TaskTable props", props)
+    //     props.submitTaskHandler(newObj)
+    //     //add newData to tasks
+    // }
+
+    const submitTaskHandler = (newData) => {
+        const newObj = {id: null, project_id: newData.project_id, start: newData.start, end: newData.end, note: newData.note}
+        console.log(newObj)
+        // debugger
+        props.submitTaskHandler(newObj, tasks)
+        setTasks(props.passTasks)
+        //add newData to tasks
     }
 
     console.log("tasks state", tasks)
@@ -83,7 +98,6 @@ function TaskTable(props) {
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
                         submitTaskHandler(newData)
-
                         resolve();
                         }, 1000);
             }),

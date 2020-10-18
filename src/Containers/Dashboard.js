@@ -94,17 +94,85 @@ export default class Dashboard extends Component {
         )
     }
 
+    // submitTaskHandler = (newData) => {
+    //   console.log("inside updateTaskHandler")
+    //   const obj = {
+    //     project_id: newData.project_id,
+    //     start: newData.start,
+    //     end: newData.end,
+    //     note: newData.note,
+    //   }
+    //   const options = {
+    //       "method": "POST",
+    //       "headers": {
+    //         "Content-Type": "application/json",
+    //         "accept": "application/json"
+    //       },
+    //     body: JSON.stringify(obj)
+    //   }
+    
+    //     fetch(`http://localhost:3000/tasks/`, options)
+    //     .then(resp => resp.json())
+    //     .then(data => console.log("New Task posted!", data)
+    //     )
+    // }
+    submitTaskHandler = (newData, tasks) => {
+      console.log("inside updateTaskHandler")
+      const obj = {
+        project_id: newData.project_id,
+        start: newData.start,
+        end: newData.end,
+        note: newData.note,
+      }
+      const options = {
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json",
+            "accept": "application/json"
+          },
+        body: JSON.stringify(obj)
+      }
+    
+        fetch(`http://localhost:3000/tasks/`, options)
+        .then(resp => resp.json())
+        .then(data => {
+          // console.log("New Task posted!", data)
+          // debugger
+          let oldTasks = this.state.tasks
+          let newTasks = [...oldTasks, tasks, data]
+          
+          this.setState({ tasks: newTasks })
+        }
+        )
+    }
+
     deleteTaskHandler = (rowData) => {
       console.log("deleteTaskHandler rowData.id", rowData.id)
       fetch(`http://localhost:3000/tasks/${rowData.id}`, {method: "DELETE"})
 
       }
       
+    // passProject = (newProject) => {
+    //   const newUserObj = this.state.userObj
+    //   newUserObj.projects.push(newProject)
+    //   // debugger
+    //   this.setState({userObj: newUserObj})
+    // }
+
     passProject = (newProject) => {
       const newUserObj = this.state.userObj
-      newUserObj.projects.push(newProject)
+      const findObj = newUserObj.projects.find(proj => proj.id === newProject.id)
+      if (findObj){
+        //patch optimistically
+        const index = newUserObj.projects.indexOf(findObj)
+        newUserObj.projects[index] = newProject
+        this.setState({userObj: newUserObj})
+      }else {
+        //post optimistically
+        newUserObj.projects.push(newProject)
+        this.setState({userObj: newUserObj})
+    }
       // debugger
-      this.setState({userObj: newUserObj})
     }
 
   render(){
@@ -143,9 +211,12 @@ export default class Dashboard extends Component {
                     <Route exact path="/projects/:id" render={(renderProps) =>
                     <ProjectShow 
                     userObj={this.state.userObj}
+                    passProject={this.passProject}
+                    passTasks={this.state.tasks}
                     deleteHandler={this.deleteHandler}
                     updateTaskHandler={this.updateTaskHandler}
                     deleteTaskHandler={this.deleteTaskHandler}
+                    submitTaskHandler={this.submitTaskHandler}
                     {...renderProps}/>
                     }/> */
                     

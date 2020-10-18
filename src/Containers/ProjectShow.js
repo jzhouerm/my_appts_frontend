@@ -52,40 +52,11 @@ export default class ProjectShow extends Component {
         fetch(`http://localhost:3000/projects/${formState.id}`, options)
         .then(res => res.json())
         .then(patchedProj => {
+            this.props.passProject(patchedProj)
             this.setState({ project: patchedProj})
         })
     }
 
-    taskSubmitHandler = (taskFormState) => {
-        console.log("projectShow")
-        const obj = {
-            project_id: taskFormState.project_id,
-            note: taskFormState.note,
-            amount: taskFormState.amount,
-            paid: taskFormState.paid,
-            start: taskFormState.start, 
-            end: taskFormState.end
-            }
-            const options = {
-                "method": "POST",
-                "headers": {
-                  "Content-Type": "application/json",
-                  "accept": "application/json"
-                },
-              body: JSON.stringify(obj)
-            }
-            
-            fetch(`http://localhost:3000/tasks`, options)
-            .then(res => res.json())
-            .then(newTask => { 
-                console.log("newArr", this.state.tasks)
-                let newArr = [...this.state.tasks, newTask]
-                this.setState({tasks: newArr})
-                // console.log(newArr)
-                // this.setState((previousState) => ({ tasks: [...previousState, newTask]}))
-            })
-    }
-    
     render() {
 
         // debugger
@@ -106,8 +77,6 @@ export default class ProjectShow extends Component {
             const currencyFormat = (num) =>{
             return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
          }
-
-
 
          return (
             <div>
@@ -135,14 +104,14 @@ export default class ProjectShow extends Component {
 
                 <UpdateProjectModal projectPatchHandler={this.projectPatchHandler} project={this.state.project} client={this.state.client}/>
                 <br/>
-                <Button variant="contained" color="primary" onClick={()=>{deleteHandler(this.state.project.id, this.props.history)}}>Delete</Button>
+                <Button variant="contained" color="primary" onClick={()=>{deleteHandler(this.state.project.id, this.props.history)}}>Delete Project</Button>
                 <br/>
                 {/* <h2>Project Activity:</h2> */}
                 {/* <ul>
                     {tasks()}
                 </ul> */}
-                <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/>
-                <TaskTable updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.state.tasks}/>
+                {/* <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/> */}
+                <TaskTable passTasks={this.props.passTasks} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.state.tasks}/>
             </div>
         )
 
