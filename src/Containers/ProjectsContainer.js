@@ -13,8 +13,8 @@ const ProjectsContainer = (props) => {
     const [clientObjs, setClientObjs] = useState([])
 
     // Get current projects
-    const [projects, setProjects] = useState([props.userObj.projects])
-    const [userObj] = useState(props.userObj)
+    // const [projects, setProjects] = useState([props.userObj.projects])
+    // const [userObj] = useState(props.userObj)
     const [loading, setLoading] = useState([true])
     const [currentPage, setCurrentPage] = useState([1])
     const[projectsPerPage] = useState(10)   //# of items per page
@@ -24,8 +24,9 @@ const ProjectsContainer = (props) => {
 
     const indexOfLastProject = currentPage * projectsPerPage      //1 X 10
     const indexOfFirstProject = indexOfLastProject - projectsPerPage  
-    const currentProjects = projects?.slice(indexOfFirstProject, indexOfLastProject)  //get state of current projects and pass in
+    const currentProjects = props.userObj.projects?.slice(indexOfFirstProject, indexOfLastProject)  //get state of current projects and pass in
 
+    // console.log("currentProjects: ", currentProjects)
 
     useEffect( () => {
         async function fetchData() {
@@ -38,38 +39,16 @@ const ProjectsContainer = (props) => {
         const res2 = await fetch("http://localhost:3000/projects/")
         res2            
             .json()
-            .then(projects => setProjects(projects))
+            // .then(projects => setProjects(projects))
         }fetchData()
     }, [])
 
-    const projectSubmitHandler = (newProject) => {
-        // console.log("inside projectSubmitHandler", newProject)
-        const obj = {
-        user_id: userObj.id,
-        client_id: newProject.client_id, 
-        name: newProject.name, 
-        description: newProject.description,
-        amount: newProject.amount,
-        start: newProject.start, 
-        end: newProject.end}
-
-        const options = {
-            "method": "POST",
-            "headers": {
-              "Content-Type": "application/json",
-              "accept": "application/json"
-            },
-          body: JSON.stringify(obj)
-        }
-        
-        fetch("http://localhost:3000/projects/", options)
-        .then(res => res.json())
-        .then(proj => {
-            props.passProject(proj)
-            setProjects([proj,...projects])}
-                )
-    }
-    
+    // const submitProjectHandler = (newProject) => {
+    //     console.log("ProjectsContainer submitProjectHandler", newProject)
+    //     props.submitProjectHandler(newProject)
+    // }
+   
+    // console.log(props.userObj.projects)
     return (
         
         <> 
@@ -77,9 +56,9 @@ const ProjectsContainer = (props) => {
             <div className="table-title">
                 <h3>My Projects</h3>
             </div>
-            <NewProjectForm projects={projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={projectSubmitHandler}/>
+            <NewProjectForm projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
             <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
-            <Pagination objectsPerPage={projectsPerPage} totalObjects={projects.length} objects={projects} paginate={paginate}/>
+            {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
 
 
 

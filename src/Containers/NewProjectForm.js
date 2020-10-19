@@ -21,7 +21,6 @@ export default class NewProjectForm extends Component {
         e.preventDefault()
         this.props.projectSubmitHandler(this.state)
         this.setState({
-            user_id: "",
             client_id: "", 
             name: "", 
             description: "",
