@@ -111,7 +111,7 @@ export default class ProjectShow extends Component {
                     {tasks()}
                 </ul> */}
                 {/* <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/> */}
-                <TaskTable passTasks={this.props.passTasks} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.state.tasks}/>
+                <TaskTable updateTaskinDataArr={this.props.updateTaskinDataArr} userObj={this.props.userObj} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.state.tasks}/>
             </div>
         )
 

@@ -14,7 +14,8 @@ export default class Dashboard extends Component {
     state = {
         emailLoggedin: null,    //❌ Email typed by user
         userObj: [],           //❌ HARD-CODED...fix lines 14-20
-        tasks: []
+        tasks: [],
+        projects: []
       }
 
     // async componentDidMount(){
@@ -90,33 +91,12 @@ export default class Dashboard extends Component {
     
         fetch(`http://localhost:3000/tasks/${updatedTask.id}`, options)
         .then(resp => resp.json())
-        .then(data => console.log(data)
+        .then(data => 
+          this.setState({ userObj: data })
         )
     }
 
-    // submitTaskHandler = (newData) => {
-    //   console.log("inside updateTaskHandler")
-    //   const obj = {
-    //     project_id: newData.project_id,
-    //     start: newData.start,
-    //     end: newData.end,
-    //     note: newData.note,
-    //   }
-    //   const options = {
-    //       "method": "POST",
-    //       "headers": {
-    //         "Content-Type": "application/json",
-    //         "accept": "application/json"
-    //       },
-    //     body: JSON.stringify(obj)
-    //   }
-    
-    //     fetch(`http://localhost:3000/tasks/`, options)
-    //     .then(resp => resp.json())
-    //     .then(data => console.log("New Task posted!", data)
-    //     )
-    // }
-    submitTaskHandler = (newData, tasks) => {
+    submitTaskHandler = (newData) => {
       console.log("inside updateTaskHandler")
       const obj = {
         project_id: newData.project_id,
@@ -136,19 +116,18 @@ export default class Dashboard extends Component {
         fetch(`http://localhost:3000/tasks/`, options)
         .then(resp => resp.json())
         .then(data => {
-          // console.log("New Task posted!", data)
-          // debugger
-          let oldTasks = this.state.tasks
-          let newTasks = [...oldTasks, tasks, data]
-          
-          this.setState({ tasks: newTasks })
-        }
-        )
+          // console.log("Data returned from submitTaskHandler:", data)
+          this.setState({userObj: data})
+        })
     }
 
     deleteTaskHandler = (rowData) => {
-      console.log("deleteTaskHandler rowData.id", rowData.id)
       fetch(`http://localhost:3000/tasks/${rowData.id}`, {method: "DELETE"})
+      .then(res => res.json())
+      .then(data => 
+      this.setState({userObj: data})
+      )
+      
 
       }
       
@@ -173,6 +152,10 @@ export default class Dashboard extends Component {
         this.setState({userObj: newUserObj})
     }
       // debugger
+    }
+
+    updateTaskinDataArr = (task) => {
+      console.log("updateTaskinDataArr", task)
     }
 
   render(){
@@ -210,9 +193,10 @@ export default class Dashboard extends Component {
                     {/* can't route to projectShow after creating a new project because userObj doesn't include new project */}
                     <Route exact path="/projects/:id" render={(renderProps) =>
                     <ProjectShow 
+                    updateTaskinDataArr = {this.updateTaskinDataArr}
                     userObj={this.state.userObj}
                     passProject={this.passProject}
-                    passTasks={this.state.tasks}
+                    // passTasks={this.state.tasks}
                     deleteHandler={this.deleteHandler}
                     updateTaskHandler={this.updateTaskHandler}
                     deleteTaskHandler={this.deleteTaskHandler}

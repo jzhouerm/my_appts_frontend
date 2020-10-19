@@ -4,8 +4,7 @@ import moment from 'moment'
 
 function TaskTable(props) {
 //props = /project/:id/tasks
-    const [tasks, setTasks] = useState(props.tasks)
-    
+    const [tasks, setTasks] = useState(props.tasks) //we might need to change this hook to allow the props.task to render correctly
     const columns=[
         {
             title:'Activity ID',field: 'id', editable: 'never', value: 'id', width: '5%'
@@ -46,28 +45,30 @@ function TaskTable(props) {
         props.deleteTaskHandler(rowData)
     }
 
-    // const submitTaskHandler = (newData) => {
-    //     const newObj = {id: null, project_id: newData.project_id, start: newData.start, end: newData.end, note: newData.note}
-    //     console.log(newObj)
-    //     // debugger
-    //     const newArr = [...tasks, newObj]
-    //     setTasks(newArr)
-    //     console.log("newArr:", newArr, "newData:", newData)
-    //     console.log("TaskTable props", props)
-    //     props.submitTaskHandler(newObj)
-    //     //add newData to tasks
-    // }
-
     const submitTaskHandler = (newData) => {
         const newObj = {id: null, project_id: newData.project_id, start: newData.start, end: newData.end, note: newData.note}
         console.log(newObj)
         // debugger
-        props.submitTaskHandler(newObj, tasks)
-        setTasks(props.passTasks)
+        const newArr = [...tasks, newObj]
+        setTasks(newArr)
+        console.log("newArr:", newArr, "newData:", newData)
+        console.log("TaskTable props", props)
+        props.submitTaskHandler(newObj)
         //add newData to tasks
     }
 
+    // const submitTaskHandler = (newData) => {
+    //     const newObj = {id: null, project_id: newData.project_id, start: newData.start, end: newData.end, note: newData.note}
+    //     console.log(newObj)
+    //     // debugger
+    //     props.submitTaskHandler(newObj, tasks)
+    //     setTasks(props.passTasks)
+    //     //add newData to tasks
+    // }
+
     console.log("tasks state", tasks)
+    console.log("TaskTable props", props.updateTaskinDataArr)
+
     // debugger
     return (
         <div>
