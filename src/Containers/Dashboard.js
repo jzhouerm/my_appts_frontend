@@ -138,25 +138,50 @@ export default class Dashboard extends Component {
     //   this.setState({userObj: newUserObj})
     // }
 
-    passProject = (newProject) => {
-      const newUserObj = this.state.userObj
-      const findObj = newUserObj.projects.find(proj => proj.id === newProject.id)
-      if (findObj){
-        //patch optimistically
-        const index = newUserObj.projects.indexOf(findObj)
-        newUserObj.projects[index] = newProject
-        this.setState({userObj: newUserObj})
-      }else {
-        //post optimistically
-        newUserObj.projects.push(newProject)
-        this.setState({userObj: newUserObj})
-    }
+    // passProject = (newProject) => {
+    //   const newUserObj = this.state.userObj
+    //   const findObj = newUserObj.projects.find(proj => proj.id === newProject.id)
+    //   if (findObj){
+    //     //patch optimistically
+    //     const index = newUserObj.projects.indexOf(findObj)
+    //     newUserObj.projects[index] = newProject
+    //     this.setState({userObj: newUserObj})
+    //   }else {
+    //     //post optimistically
+    //     newUserObj.projects.push(newProject)
+    //     this.setState({userObj: newUserObj})
+    // }
       // debugger
+    // }
+
+    submitProjectHandler = (newProject) =>{
+      console.log("we're in the submitprojecthandler :", newProject)
+      const obj = {
+        user_id: this.state.userObj.id,
+        client_id: newProject.client_id, 
+        name: newProject.name, 
+        description: newProject.description,
+        amount: newProject.amount,
+        start: newProject.start, 
+        end: newProject.end}
+
+        console.log(obj)
+        const options = {
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "accept": "application/json"
+            },
+          body: JSON.stringify(obj)
+        }
+        
+        fetch("http://localhost:3000/projects/", options)
+        .then(res => res.json())
+        .then(data => 
+          this.setState({userObj: data})
+        )
     }
 
-    updateTaskinDataArr = (task) => {
-      console.log("updateTaskinDataArr", task)
-    }
 
   render(){
     //   console.log("dashboard props", this.props) //✅"email@email.com"
@@ -208,6 +233,7 @@ export default class Dashboard extends Component {
                     <ProjectsContainer
                     passProject={this.passProject}
                     userObj={this.state.userObj} 
+                    submitProjectHandler={this.submitProjectHandler}
                     />} />
 
 

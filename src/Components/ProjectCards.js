@@ -27,7 +27,7 @@ const currencyFormat = (num) =>{
                     </thead>
 
                     <tbody className="table-hover">
-                            {projects.map(project => (
+                            {projects?.map(project => (
                                 <tr key={project.id}>
                                     <td className="text-left">{project.id}</td>
                                     <NavLink to={`/projects/${project.id}`} >
