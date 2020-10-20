@@ -3,6 +3,7 @@ import '../CSS/ClientTable.css'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ProjectCards from '../Components/ProjectCards'
 import Pagination from '../Components/Pagination'
+import NewProjectModal from '../Components/NewProjectModal'
 import NewProjectForm from './NewProjectForm'
 import ProjectShow from './ProjectShow'
 // import ProjectsContainer from './ProjectsContainer';
@@ -51,18 +52,27 @@ const ProjectsContainer = (props) => {
     // console.log(props.userObj.projects)
     return (
         
-        <> 
+        <div className="projects-container"> 
+        
 
             <div className="table-title">
                 <h3>My Projects</h3>
             </div>
-            <NewProjectForm projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
+            <div>
+            </div>
+            <div className="new-project-form">
+                <NewProjectModal projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
+                {/* <NewProjectForm projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/> */}
+            </div>
+
+            <div className="projects-list">
             <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
             {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
+            </div>
 
 
 
-        </>
+        </div>
     )
      
 

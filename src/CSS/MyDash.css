@@ -1,0 +1,57 @@
+.maindisplay-container{
+    display: flex;
+    flex-direction: row;
+    /* background-color: black; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align:center;
+    padding: 50px;
+
+}
+
+.first-item{
+    background-color: blue;
+    width: 47%; 
+    height: 30vh;
+padding: 20px;
+}
+.health-table{
+    padding: 15px;
+}
+
+.second-item{
+    background-color: yellow;
+    width: 47%;
+    height: 30vh;
+    padding: 20px;
+}
+.chartjs-render-monitor{
+    padding: 25px;
+}
+
+.third-item{
+    /* background-color: red; */
+    width: 2%; 
+    height: 30vh;
+}
+
+.fourth-item{
+    /* background-color: blue;*/
+    width: 47%; 
+    height: 30vh;
+    padding: 20px;
+
+}
+
+.fifth-item{
+    /* background-color: yellow; */
+    width: 2%;
+    height: 30vh;
+}
+
+.sixth-item{
+background-color: red;
+width: 47%; 
+height: 30vh;
+padding: 20px;
+}

@@ -42,7 +42,7 @@ export default class ProjectShow extends Component {
         }
         const options = {
             "method": "PATCH",
-            "headers": {
+            "headers": { 
               "Content-Type": "application/json",
               "accept": "application/json"
             },
@@ -51,9 +51,10 @@ export default class ProjectShow extends Component {
         
         fetch(`http://localhost:3000/projects/${formState.id}`, options)
         .then(res => res.json())
-        .then(patchedProj => {
-            this.props.passProject(patchedProj)
-            this.setState({ project: patchedProj})
+        .then(userObj => {
+            // console.log(userObj)
+            this.props.passProject(userObj)
+            // this.setState({ project: patchedProj})
         })
     }
 

@@ -16,6 +16,11 @@ npm install @material-ui/icons
 https://www.positronx.io/create-react-modal-popup-with-material-ui/
 https://material-ui.com/customization/color/
 https://material-table.com/#/docs/features/editable
+https://codesandbox.io/s/material-ui-grid-examples-yejec?from-embed=&file=/examples/Example4.js
+
+React Icons (SideNavBar.js)
+npm install react-icons --save
+https://www.youtube.com/watch?v=CXa0f4-dWi4
 
 .babelrc config
 https://www.valentinog.com/blog/await-react/
@@ -41,3 +46,19 @@ https://stackoverflow.com/questions/20925494/delete-associated-records-on-object
 AWS Email
 https://www.youtube.com/watch?v=4o6GCiUX8Xk
 https://www.webmerge.me
+
+Simple bar graph
+https://codepen.io/tailofmoon/pen/paJJrw
+https://codepen.io/darcyvoutt/pen/dnEBj
+
+Dashboard template
+https://github.com/flatlogic/react-material-admin/blob/master/src/pages/dashboard/mock.js
+
+Date from 7 days ago
+Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+
+Color schemes
+https://graphicmama.com/blog/website-color-schemes/
+
+moment - date formatting
+https://www.sitepoint.com/managing-dates-times-using-moment-js/

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect, withRouter} from "react-router-dom";
+// import SideNavBar from './SideNavBar-old';
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
 import TasksContainer from './ProjectsContainer'
@@ -131,12 +132,9 @@ export default class Dashboard extends Component {
 
       }
       
-    // passProject = (newProject) => {
-    //   const newUserObj = this.state.userObj
-    //   newUserObj.projects.push(newProject)
-    //   // debugger
-    //   this.setState({userObj: newUserObj})
-    // }
+    passProject = (newUserObj) => {
+      this.setState({userObj: newUserObj})
+    }
 
     // passProject = (newProject) => {
     //   const newUserObj = this.state.userObj
@@ -191,7 +189,7 @@ export default class Dashboard extends Component {
         {this.state.userObj ?
             <Router>
             
-                <h1>{this.state.userObj.first_name}'s Dashboard</h1>
+                {/* <h1>{this.state.userObj.business_name}</h1> */}
                 <SideNavBar userObj={this.state.userObj}/>
                         
                 <Switch>
@@ -221,7 +219,6 @@ export default class Dashboard extends Component {
                     updateTaskinDataArr = {this.updateTaskinDataArr}
                     userObj={this.state.userObj}
                     passProject={this.passProject}
-                    // passTasks={this.state.tasks}
                     deleteHandler={this.deleteHandler}
                     updateTaskHandler={this.updateTaskHandler}
                     deleteTaskHandler={this.deleteTaskHandler}
@@ -231,7 +228,6 @@ export default class Dashboard extends Component {
                     
                     <Route path="/projects" render={() => 
                     <ProjectsContainer
-                    passProject={this.passProject}
                     userObj={this.state.userObj} 
                     submitProjectHandler={this.submitProjectHandler}
                     />} />
