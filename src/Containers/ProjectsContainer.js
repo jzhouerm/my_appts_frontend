@@ -66,8 +66,8 @@ const ProjectsContainer = (props) => {
             </div>
 
             <div className="projects-list">
-            <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
-            {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
+                <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
+                {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
             </div>
 
 

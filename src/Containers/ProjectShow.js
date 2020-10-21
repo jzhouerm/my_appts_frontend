@@ -52,11 +52,16 @@ export default class ProjectShow extends Component {
         fetch(`http://localhost:3000/projects/${formState.id}`, options)
         .then(res => res.json())
         .then(userObj => {
-            // console.log(userObj)
+            console.log("projectPatchHandler", userObj)
             this.props.passProject(userObj)
             // this.setState({ project: patchedProj})
         })
     }
+
+    // componentDidUpdate (prevProps) {
+    //     console.log("prevProps", prevProps)
+    //     // if()
+    // }
 
     render() {
 
@@ -73,15 +78,15 @@ export default class ProjectShow extends Component {
             // debugger
             const client = this.state.userObj.clients.find(client => client.id === parseInt(project.client_id))
             const tasks = () => {return this.state.tasks.map(task => <li>{"Date: " + moment(task.start).format("MMMM Do YYYY") + " " + "Description/notes: " + task.note}</li>) }
-            const total_balance = (isNaN(parseInt(this.state.project.amount)) ? 0 : parseInt(this.state.project.amount))
-            const amount_paid = (isNaN(parseInt(this.state.project.paid)) ? 0 : parseInt(this.state.project.paid))
+            const total_balance = (isNaN(parseInt(project.amount)) ? 0 : parseInt(project.amount))
+            const amount_paid = (isNaN(parseInt(project.paid)) ? 0 : parseInt(project.paid))
             const currencyFormat = (num) =>{
             return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
          }
 
          return (
             <div>
-                <h3>Project Name: {this.state.project.name}</h3><span>{this.state.project.name}</span>
+                <h3>Project Name: {project.name}</h3><span>{project.name}</span>
                 <h3>Project Description:</h3><span>{project.description}</span>
 
                 <h3>Client:</h3>
@@ -93,23 +98,23 @@ export default class ProjectShow extends Component {
                 <span>Email: {this.state.client.email}</span>
                 <br/>
                 <h3>Start Date:</h3>
-                <span>{moment(this.state.project.start).format("MMMM Do YYYY")}</span>
+                <span>{moment(project.start).format("MMMM Do YYYY")}</span>
                 <h3>End Date:</h3>
-                <span>{moment(this.state.project.end).format("MMMM Do YYYY")}</span>
+                <span>{moment(project.end).format("MMMM Do YYYY")}</span>
 
 
                 <h3>Client balance:</h3>
                 <span>{"Total Billed: " + currencyFormat(total_balance)}</span>
                 <p>{"Remaining balance due from client:  " + currencyFormat(parseInt(total_balance - amount_paid))}</p>
-                <p>{"Project status:  " + (this.state.project.status ? "Completed" : "In progress")}</p>
+                <p>{"Project status:  " + (project.status ? "Completed" : "In progress")}</p>
 
-                <UpdateProjectModal projectPatchHandler={this.projectPatchHandler} project={this.state.project} client={this.state.client}/>
+                <UpdateProjectModal projectPatchHandler={this.projectPatchHandler} project={project} client={this.state.client}/>
                 <br/>
                 <Button variant="contained" color="primary" onClick={()=>{deleteHandler(this.state.project.id, this.props.history)}}>Delete Project</Button>
                 <br/>
                 {/* <h2>Project Activity:</h2> */}
                 {/* <ul>
-                    {tasks()}
+                    {tasks()} 
                 </ul> */}
                 {/* <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/> */}
                 <TaskTable updateTaskinDataArr={this.props.updateTaskinDataArr} userObj={this.props.userObj} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).tasks}/>

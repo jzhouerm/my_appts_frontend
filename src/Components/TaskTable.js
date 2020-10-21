@@ -46,8 +46,6 @@ function TaskTable(props) {
         props.submitTaskHandler(newObj)
     }
 
- 
-
     // debugger
     return (
         <div>

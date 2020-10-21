@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect, withRouter} from "react-router-dom";
-// import SideNavBar from './SideNavBar-old';
 import SideNavBar from './SideNavBar';
 import ClientsContainer from './ClientsContainer'
-import TasksContainer from './ProjectsContainer'
 import NewClientForm from './NewClientForm'
 import ProjectsContainer from './ProjectsContainer';
 import ProjectShow from './ProjectShow'
@@ -126,31 +124,14 @@ export default class Dashboard extends Component {
       fetch(`http://localhost:3000/tasks/${rowData.id}`, {method: "DELETE"})
       .then(res => res.json())
       .then(data => 
-      this.setState({userObj: data})
-      )
-      
-
-      }
+      this.setState({userObj: data}))
+    }
       
     passProject = (newUserObj) => {
+      // debugger
       this.setState({userObj: newUserObj})
     }
 
-    // passProject = (newProject) => {
-    //   const newUserObj = this.state.userObj
-    //   const findObj = newUserObj.projects.find(proj => proj.id === newProject.id)
-    //   if (findObj){
-    //     //patch optimistically
-    //     const index = newUserObj.projects.indexOf(findObj)
-    //     newUserObj.projects[index] = newProject
-    //     this.setState({userObj: newUserObj})
-    //   }else {
-    //     //post optimistically
-    //     newUserObj.projects.push(newProject)
-    //     this.setState({userObj: newUserObj})
-    // }
-      // debugger
-    // }
 
     submitProjectHandler = (newProject) =>{
       console.log("we're in the submitprojecthandler :", newProject)

@@ -62,3 +62,6 @@ https://graphicmama.com/blog/website-color-schemes/
 
 moment - date formatting
 https://www.sitepoint.com/managing-dates-times-using-moment-js/
+
+re-charts example guide
+https://github.com/jerairrest/react-chartjs-2/blob/master/example/src/components/line.js
