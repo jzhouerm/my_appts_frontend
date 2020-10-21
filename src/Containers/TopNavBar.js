@@ -20,9 +20,9 @@ class TopNavBar extends React.Component {
 
                 </div>
                 <ul className="nav-menu">
-                <NavLink to="/" exact><li className="nav-links">Home</li></NavLink>
-                <NavLink to="/contact" exact><li className="nav-links">Contact Us</li></NavLink>
-                <NavLink to="/about" exact><li className="nav-links">About</li></NavLink>
+                {/* <NavLink to="/" exact><li className="nav-links">Home</li></NavLink> */}
+                {/* <NavLink to="/contact" exact><li className="nav-links">Contact Us</li></NavLink> */}
+                {/* <NavLink to="/about" exact><li className="nav-links">About</li></NavLink> */}
                 <NavLink to="/login" exact><li className="nav-links">Log In</li></NavLink>
                 <NavLink to="/signup" exact><li className="nav-links nav-links-btn">Sign Up</li></NavLink>
 

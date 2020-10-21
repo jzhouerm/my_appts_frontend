@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
-import {withRouter} from "react-router-dom";
+// import {withRouter} from "react-router-dom";
 import moment from 'moment'
 import UpdateProjectModal from '../Components/UpdateProjectModal'
-import Button from '@material-ui/core/Button';
-import AddTaskForm from '../Components/AddTaskForm'
-import TaskTable from '../Components/TaskTable'
 
-export default class ProjectShow extends Component {
+import TaskTable from '../Components/TaskTable'
+import Chip from '@material-ui/core/Chip';
+import DoneIcon from '@material-ui/icons/Done';
+import { createMuiTheme, withStyles, makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
+import { green, purple } from '@material-ui/core/colors';
+import '../CSS/ProjectShow.css'
+
+class ProjectShow extends Component {
+
 
     state= {
         userObj: this.props.userObj,
@@ -22,11 +29,12 @@ export default class ProjectShow extends Component {
         paid: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).paid,
         start: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).start, 
         end: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).end,
+        status: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).status,
         //tasks
-        tasks: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).tasks
+        tasks: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).tasks,
+        btnDisable: false
 
     }
-    // projectUpdateSubmitHandler
     projectPatchHandler =(formState) => {
         console.log("PROJECT UPDATING", formState)
         const obj = {
@@ -58,17 +66,51 @@ export default class ProjectShow extends Component {
         })
     }
 
-    // componentDidUpdate (prevProps) {
-    //     console.log("prevProps", prevProps)
-    //     // if()
-    // }
+    statusHandler =(status, id) => {
+        // console.log("STATUS UPDATING", status)
+        const obj = {status: status}
+        const options = {
+            "method": "PATCH",
+            "headers": { 
+              "Content-Type": "application/json",
+              "accept": "application/json"
+            },
+          body: JSON.stringify(obj)
+        }
+        
+        fetch(`http://localhost:3000/projects/${id}`, options)
+        .then(res => res.json())
+        .then(userObj => {
+            console.log("projectPatchHandler", userObj)
+            this.props.passProject(userObj)
+            // this.setState({ project: patchedProj})
+            console.log("STATUS PATCHED",this.state.status)
+            const btn = this.state.btnDisable
+            const status = this.state.status
+            this.setState({status: !status})
+            this.setState({btnDisable: !btn})
+        })
+    }
 
     render() {
 
+        const { classes } = this.props;
         // debugger
         const {userObj, deleteHandler, editHandler} = this.props
         const clicked_id = this.props.match.params.id
         const project = this.props.userObj.projects.find(project => project.id === parseInt(clicked_id))
+
+        // const classes = useStyles();
+        // const [open, setOpen] = React.useState(false);
+
+        const changeStatus =()=>{
+            // const btn = this.state.btnDisable
+            // this.setState({btnDisable: !btn})
+            const status = this.state.status
+            // this.setState({status: !status})
+            this.statusHandler(!status, project.id)
+
+        }
 
         const loading = ()=> {
             return "Loading"
@@ -85,39 +127,52 @@ export default class ProjectShow extends Component {
          }
 
          return (
-            <div>
-                <h3>Project Name: {project.name}</h3><span>{project.name}</span>
-                <h3>Project Description:</h3><span>{project.description}</span>
+            <div className="pshow-container">
 
-                <h3>Client:</h3>
-                <span>{"Name: " + client.last_name + ", " + client.first_name}</span>
-                <br/>
+                <div className="project-info-box">
+                    <h3>Project Name: {project.name}</h3><span>{project.name}</span>
+                    <h3>Project Description:</h3><span>{project.description}</span>
+                </div>
 
-                <span>Phone contact: {this.state.client.phone}</span>
-                <br/>
-                <span>Email: {this.state.client.email}</span>
-                <br/>
+                <div className="client-info-box">
+                    <h3>Client:</h3>
+                    <p>{"Name: " + client.last_name + ", " + client.first_name}</p>
+                    <p>Phone contact: {this.state.client.phone}</p>
+                    <p>Email: {this.state.client.email}</p>
+                </div>
+
+                <div className="client-info-box">
                 <h3>Start Date:</h3>
                 <span>{moment(project.start).format("MMMM Do YYYY")}</span>
                 <h3>End Date:</h3>
                 <span>{moment(project.end).format("MMMM Do YYYY")}</span>
+                </div>
 
-
+                <div className="client-info-box">
                 <h3>Client balance:</h3>
                 <span>{"Total Billed: " + currencyFormat(total_balance)}</span>
                 <p>{"Remaining balance due from client:  " + currencyFormat(parseInt(total_balance - amount_paid))}</p>
-                <p>{"Project status:  " + (project.status ? "Completed" : "In progress")}</p>
+                <p>{"Project status: "}</p>
+                <span className={project.status ? 'green' : 'red'}><b>{project.status ? "Completed" : "In progress"}</b></span>
+                </div>
 
-                <UpdateProjectModal projectPatchHandler={this.projectPatchHandler} project={project} client={this.state.client}/>
-                <br/>
-                <Button variant="contained" color="primary" onClick={()=>{deleteHandler(this.state.project.id, this.props.history)}}>Delete Project</Button>
-                <br/>
-                {/* <h2>Project Activity:</h2> */}
-                {/* <ul>
-                    {tasks()} 
-                </ul> */}
-                {/* <AddTaskForm project={this.state.project} taskSubmitHandler={this.taskSubmitHandler}/> */}
-                <TaskTable updateTaskinDataArr={this.props.updateTaskinDataArr} userObj={this.props.userObj} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).tasks}/>
+
+                <div className="pbuttons-container">
+                    <UpdateProjectModal projectPatchHandler={this.projectPatchHandler} project={project} client={this.state.client}/>
+                    <br/>
+                    <Button variant="contained" color="primary" onClick={()=>{deleteHandler(project.id, this.props.history)}}>Delete Project</Button>
+                    <br/>
+                    {/* <Chip theme={makeStyles} label="Completed" color="primary" deleteIcon={<DoneIcon />}/> */}
+
+                    <ThemeProvider >
+                        <Button variant="contained" color="primary" onClick={()=>changeStatus()}>
+                            {(this.state.status === false) ? "Complete" : "In progress"}
+                        </Button>
+                    </ThemeProvider>
+                </div>
+
+                    <TaskTable updateTaskinDataArr={this.props.updateTaskinDataArr} userObj={this.props.userObj} submitTaskHandler={this.props.submitTaskHandler} updateTaskHandler={this.props.updateTaskHandler} deleteTaskHandler={this.props.deleteTaskHandler} tasks={this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).tasks}/>
+
             </div>
         )
 
@@ -129,3 +184,8 @@ export default class ProjectShow extends Component {
         
     }
 }
+        // ProjectShow.propTypes = {
+        //     classes: PropTypes.object.isRequired,
+        //   };
+export default ProjectShow;
+// https://stackoverflow.com/questions/56432167/how-to-style-components-using-makestyles-and-still-have-lifecycle-methods-in-mat

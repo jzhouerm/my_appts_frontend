@@ -1,0 +1,58 @@
+
+.pshow-container{
+    /* background-color: pink; */
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* position: relative; */
+    width: 80%;
+    /* left: 10%; */
+    /* align-items: flex-start; */
+
+}
+
+.client-info-box{
+    /* background-color: lightcoral; */
+    width: 50%;
+    padding: 10px;
+    /* color: #ff0000; */
+    /* align-items: right; */
+    
+}
+
+.project-info-box{
+    /* background-color: lightseagreen; */
+    width: 50%;
+    padding: 10px;
+    /* position: relative; */
+    /* align-items: left; */
+
+}
+
+.pbuttons-container{
+    display: flex;
+    /* background-color: orange; */
+    width: 100%;
+    height: 100px;
+    align-items: center;
+
+    /* left: 150px;  */
+    /* top: -20px; */
+    padding: 50px;
+    /* position: relative; */
+    justify-content: flex-start;
+    /* justify-content: space-evenly; */
+
+}
+.red {
+    color: #D2222D;
+  }
+.green {
+    color: #007000;
+  }
+
+.pbuttons-container button {
+    margin: 100px;
+    background-color: #3BBA9C;
+}

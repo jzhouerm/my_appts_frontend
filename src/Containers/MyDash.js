@@ -22,14 +22,14 @@ export default class MyDash extends React.Component {
   render() {
     
     console.log( "test", (this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day7).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0)))
-    console.log(this.props.userObj.tasks)
-    console.log(this.dayHours(day1))
-    console.log(this.dayHours(day2))
-    console.log(this.dayHours(day3))
-    console.log(this.dayHours(day4))
-    console.log(this.dayHours(day5))
-    console.log(this.dayHours(day6))
-    console.log(this.dayHours(day7))
+    // console.log(this.props.userObj.tasks)
+    // console.log(this.dayHours(day1))
+    // console.log(this.dayHours(day2))
+    // console.log(this.dayHours(day3))
+    // console.log(this.dayHours(day4))
+    // console.log(this.dayHours(day5))
+    // console.log(this.dayHours(day6))
+    // console.log(this.dayHours(day7))
 
     
     // debugger

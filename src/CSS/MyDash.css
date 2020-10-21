@@ -8,9 +8,9 @@
     padding: 50px;
 
 }
-
+/* Health chart */
 .first-item{
-    background-color: blue;
+    /* background-color: blue; */
     width: 47%; 
     height: 30vh;
     padding: 20px;
@@ -20,7 +20,7 @@
 }
 
 .second-item{
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 47%;
     height: 30vh;
     padding: 20px;
@@ -36,7 +36,7 @@
 }
 
 .fourth-item{
-    /* background-color: blue;*/
+    /* background-color: blue; */
     width: 47%; 
     height: 30vh;
     padding: 20px;
@@ -49,8 +49,9 @@
     height: 30vh;
 }
 
+/* bar graph */
 .sixth-item{
-background-color: red;
+/* background-color: red; */
 width: 47%; 
 height: 30vh;
 padding: 20px;
