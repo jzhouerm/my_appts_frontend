@@ -1,0 +1,34 @@
+/* .new-project-form
+{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 60vh;
+    margin: 50px;
+    width: 100%;
+    /* padding: 500px; */
+    /* background-color: lightsalmon; */
+/* } */ 
+
+.update-project-form input
+{
+    background-color: lightsalmon;
+
+    /* justify-content: center; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* height: 60vh; */
+    /* margin: 20px;
+    width: 30%;
+    background-color: white;
+    align-self: left;
+    border: solid;
+    line-height: 2.5;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px; */
+}
+
+

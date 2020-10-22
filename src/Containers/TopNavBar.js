@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import '../CSS/TopNavBar.css';
-// import hex from '../Components/hex.png'
+import hex2 from '../Components/hex2.png'
 
 
 class TopNavBar extends React.Component { 
@@ -12,8 +12,8 @@ class TopNavBar extends React.Component {
         <div className="nav-container">
             <nav className="navbar">
                 {/* <h1 id="navbar-logo">My Clients</h1> */}
-                <h1 className="logo-name">My HQ</h1>
-                {/* <img src={hex} alt="hex" /> */}
+                <h1 className="logo-name"><img src={hex2} className="logo" alt="hex2" />            My HQ </h1>
+                
 
                 <div className="menu-toggle" id="mobile-menu">
                 {/* <NavLink to="/menu" exact><span className="bar">toggle menu</span></NavLink>

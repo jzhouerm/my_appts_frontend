@@ -83,7 +83,7 @@ export default function UpdateProjectModal(props) {
                             <p name="client_name">{ props.client.last_name + ", " + props.client.first_name}</p>
                             <br/>
 
-                        <form onSubmit={projectPatchHandler}>
+                        <form className='update-project-form' onSubmit={projectPatchHandler}>
                             <h3>Project Title:</h3>
                             <p><input width="100px" className="" name="name" placeholder="Project Title" onChange={projectUpdateChangeHandler} type="text" value={formState.name} /></p>
                             <br/>
