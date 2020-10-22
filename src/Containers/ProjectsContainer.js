@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ProjectCards from '../Components/ProjectCards'
 import Pagination from '../Components/Pagination'
 import NewProjectModal from '../Components/NewProjectModal'
-import NewProjectForm from './NewProjectForm'
 import ProjectShow from './ProjectShow'
 // import ProjectsContainer from './ProjectsContainer';
 
@@ -44,10 +43,6 @@ const ProjectsContainer = (props) => {
         }fetchData()
     }, [])
 
-    // const submitProjectHandler = (newProject) => {
-    //     console.log("ProjectsContainer submitProjectHandler", newProject)
-    //     props.submitProjectHandler(newProject)
-    // }
    
     // console.log(props.userObj.projects)
     return (
@@ -62,7 +57,6 @@ const ProjectsContainer = (props) => {
             </div>
             <div className="new-project-form">
                 <NewProjectModal projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
-                {/* <NewProjectForm projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/> */}
             </div>
 
             <div className="projects-list">

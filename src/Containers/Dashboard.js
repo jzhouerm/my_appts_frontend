@@ -62,11 +62,12 @@ export default class Dashboard extends Component {
     deleteHandler =(id, history)=>{
       console.log("deletehandler", id)
 // debugger
-      fetch(`http://localhost:3000/projects/${id}`, {
-      method: "DELETE"
-    })
+      fetch(`http://localhost:3000/projects/${id}`, {method: "DELETE"})
+      .then(res => res.json())
+      .then(data => 
+        this.setState({userObj: data}))
       return(
-      history.push("/projects")
+        history.push("/projects")
       )
     }
 

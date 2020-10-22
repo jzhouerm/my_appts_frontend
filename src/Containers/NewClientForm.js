@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import '../CSS/NewClientForm.css'
+import Button from '@material-ui/core/Button';
 
 export default class NewClientForm extends Component {
     state = {
@@ -28,22 +29,32 @@ export default class NewClientForm extends Component {
 
     render() {
         return (
-                <>
-                <h1>Add a new client:</h1>
-                <br />
-                <form onSubmit={this.clientSubmitHandler}>
-                    <h2>Client information:</h2>
-                    <p><input className="" name="first_name" placeholder="First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} /></p>
-                    <p><input className="" name="last_name" placeholder="Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/></p>
-                    <p><input className="" name="phone" placeholder="Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/></p>
-                    <p><input className="" name="email" placeholder="Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/></p>
-            
-                    <p>
-                        <input className="form-button" type="submit" />
-                    </p>
+                // <div className="new-client-form">
 
-                </form>
-                </>
+                    <form  className="new-client-form"onSubmit={this.clientSubmitHandler}>
+                        <h1>Add a new client:</h1>
+                        <h2>Client information:</h2>
+                            <br/>
+                        <p>First Name: </p>
+                        <input className="" name="first_name" placeholder="First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} />
+                        <p>Last Name:</p>
+                        <input className="" name="last_name" placeholder="Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/>
+                        <p>Phone Contact:</p>
+                        <input className="" name="phone" placeholder="Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/>
+                        <p>Email:</p>
+                        <input className="" name="email" placeholder="Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/>
+                
+                            <br/>
+                            <br/>
+
+                        <p>
+                            {/* <input className="form-button" type="submit" /> */}
+                            <Button style={{backgroundColor: '#3BBA9C'}} variant="contained" color="primary" type="submit">Add new Client</Button>
+                        </p>
+
+                    </form>
+
+                // </div>
         )
     }
 }

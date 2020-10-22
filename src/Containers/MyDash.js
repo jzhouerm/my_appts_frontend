@@ -22,50 +22,22 @@ export default class MyDash extends React.Component {
   render() {
     
     console.log( "test", (this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day7).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0)))
-    // console.log(this.props.userObj.tasks)
-    // console.log(this.dayHours(day1))
-    // console.log(this.dayHours(day2))
-    // console.log(this.dayHours(day3))
-    // console.log(this.dayHours(day4))
-    // console.log(this.dayHours(day5))
-    // console.log(this.dayHours(day6))
-    // console.log(this.dayHours(day7))
+    console.log(this.props.userObj.tasks)
+    console.log(this.dayHours(day1))
+    console.log(this.dayHours(day2))
+    console.log(this.dayHours(day3))
+    console.log(this.dayHours(day4))
+    console.log(this.dayHours(day5))
+    console.log(this.dayHours(day6))
+    console.log(this.dayHours(day7))
 
     
     // debugger
     return (
+      <>
       <div className="maindisplay-container">
-          <div className="first-item">
-            <h2>Health</h2>
-            <table className="health-table" width='100%'>
-              {/* <tr>
-                <th>Company</th>
-                <th>Contact</th>
-              </tr> */}
-              <tbody>
-                <tr>
-                  <td width='20%'>Time:</td>
-                  <td>90% ahead of schedule for all projects</td>
-                </tr>
-                <tr>
-                  <td width='20%'>Tasks:</td>
-                  <td>5 tasks to be completed</td>
-                </tr>
-                <tr>
-                  <td width='20%'>Progress:</td>
-                  <td>86% of tasks completed</td>
-                </tr>
-                <tr>
-                  <td width='20%'>Payments:</td>
-                  <td>90% collection rate from client</td>
-                </tr>
-              </tbody>
-          </table>
-
-          </div>
-          <div className="third-item">
-          </div>
-          <div className="second-item">
+        <h1 className="dash-header">My Dashboard</h1>
+          <div className="graph">
           <Bar
             data={{
               labels: [day1, day2, day3, day4, day5, day6, day7],
@@ -75,8 +47,10 @@ export default class MyDash extends React.Component {
                   backgroundColor: '#3BBA9C',
                   // backgroundColor: '#34f5c5',
                   borderColor: 'rgba(0,0,0,1)',
-                  borderWidth: 2,
+                  borderWidth: 1,
                   data: [this.dayHours(day1), this.dayHours(day2), this.dayHours(day3), this.dayHours(day4), this.dayHours(day5), this.dayHours(day6), this.dayHours(day7)]
+                  // data: [10, 20, 30, 40, 50, 60, 70]
+
                 }
               ]
             }}
@@ -84,7 +58,7 @@ export default class MyDash extends React.Component {
               title:{
                 display:true,
                 text: 'Weekly Productivity',
-                fontSize:20
+                fontSize:30
               },
               legend:{
                 display:true,
@@ -94,17 +68,43 @@ export default class MyDash extends React.Component {
             }}
           />
           </div>
+          <div className="bottom-container">
+                      <div className="box-1">
+                        <h2>Health</h2>
+                        <table className="health-table">
+                          <tbody>
+                            <tr>
+                              <td>Time:</td>
+                              <td >90% ahead of schedule for all projects</td>
+                            </tr>
+                            <tr >
+                              <td>Tasks:</td>
+                              <td >5 tasks to be completed</td>
+                            </tr>
+                            <tr >
+                              <td>Progress:</td>
+                              <td >86% of tasks completed</td>
+                            </tr>
+                            <tr>
+                              <td>Payments:</td>
+                              <td >90% collection rate from client</td>
+                            </tr>
+                          </tbody>
+                      </table>
 
-          <div className="fourth-item">
-            <p>This is a paragraph</p>
+                      </div>
+                      {/* <div className="box-2">
+                        <p>This is box-2</p>
+                      </div> */}
+
           </div>
-          <div className="fifth-item">
-          </div>
-          <div className="sixth-item">
-            <p>This is a paragraph</p>
-          </div>
+          {/* <div className="third-item">
+          </div> */}
+
+
           
       </div>
+      </>
     );
   }
 }

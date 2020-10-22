@@ -1,6 +1,9 @@
 .mainContainer{
     /* background-color: pink; */
     position: relative;
+    /* background-image: url("https://images.unsplash.com/photo-1544816736-2920bd9a3a36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80");
+    background-image: url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80");
+    background-repeat: repeat-y; */
 }
 
 /* ProjectsContainer */
@@ -29,5 +32,7 @@
     /* background-color: green; */
     width: 100%
 }
+
+
 /* ProjectsContainer */
 

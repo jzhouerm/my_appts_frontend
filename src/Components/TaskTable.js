@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import MaterialTable from 'material-table'
 import moment from 'moment'
+import '../CSS/TaskTable.css'
 
 function TaskTable(props) {
 //props = /project/:id/tasks
     // const [tasks, setTasks] = useState(props.tasks) //we might need to change this hook to allow the props.task to render correctly
     const columns=[
         {
-            title:'Activity ID',field: 'id', editable: 'never', value: 'id', width: '5%'
+            title:'Activity ID',field: 'id', editable: 'never', value: 'id', width: '3%'
         },
         {
-            title:'Project ID',field: 'project_id', editable: 'onAdd', value: 'project_id',  width: '5%'
+            title:'Project ID',field: 'project_id', editable: 'onAdd', value: 'project_id',  width: '3%'
         },
         {
-            title:'Start Time', field: 'start',
-            type:"datetime"
+            title:'Start Time', field: 'start', type:"datetime",  width: '18%'
         },
         {
-            title:'End Time', field:'end',
-            type:"datetime"
+            title:'End Time', field:'end', type:"datetime", width: '18%'
         },
         {
-            title:'Details', field:'note'
+            title:'Details', field:'note', cellStyle: {width: '500px', maxWidth: '500px'}
         }
     ]
 
+
+    
     const taskMapper =() => {
     // return tasks.map(task=> [{"id": task.id, "project_id": task.project_id, "note": task.note, "start": moment(task.start).format("MMMM Do YYYY"), "end": moment(task.end).format("MMMM Do YYYY")}]).flat()
     return props.tasks.map(task=> [{"id": task.id, "project_id": task.project_id, "note": task.note, "start": task.start, "end": task.end}]).flat()
@@ -51,7 +52,9 @@ function TaskTable(props) {
     // debugger
     return (
         <div>
-            <MaterialTable title="Project Activity"
+            <MaterialTable className="task-table" 
+            style={{zIndex: 1, position: 'relative'}}
+            title="Project Activity"
             data={taskMapper()}
             columns={columns}
             options={{
@@ -59,7 +62,8 @@ function TaskTable(props) {
                 search:false,
                 // paging:false,
                 filtering: true,
-                exportButton: true
+                exportButton: true,
+                headerStyle: {zIndex: 1},
             }}
             editable={{
                     isEditHidden: columnData => columnData.name === 'id',
@@ -80,6 +84,7 @@ function TaskTable(props) {
             }),
 
                 }}
+            
             
 
             actions={[

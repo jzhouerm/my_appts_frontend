@@ -85,7 +85,7 @@ export default function NewProjectModal(props) {
     return (
         <div>
 
-            <Button variant="contained" color="primary" onClick={handleOpen}>
+            <Button variant="contained" style={{backgroundColor: '#3BBA9C'}} onClick={handleOpen}>
                 Create Project
             </Button>
 
@@ -125,11 +125,11 @@ export default function NewProjectModal(props) {
                             <p><textarea rows="5" cols="100" className="" name="description" placeholder="Note/description" onChange={projectChangeHandler} type="text" value={formState.description}/></p>
                             <br/>
                             <br/>
-                            <Button variant="contained" color="primary" type="submit" onClick={handleClose}>Create Project</Button>
+                            <Button variant="contained" style={{backgroundColor: '#3BBA9C'}} color="primary" type="submit" onClick={handleClose}>Create Project</Button>
                             <br/>
                         </form>
                             <br/>
-                            <Button variant="contained" color="primary" onClick={handleClose}>Cancel</Button>
+                            <Button variant="contained" style={{backgroundColor: '#3BBA9C'}} color="primary" onClick={handleClose}>Cancel</Button>
 
                     </div>
                 </Fade>

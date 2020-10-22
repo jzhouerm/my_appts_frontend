@@ -5,6 +5,8 @@
     justify-content: flex-start;
     align-items: center;
     padding: 30px;
+    /* position: absolute; */
+    /* z-index: 9; */
   }
   
   .sidemenu-bars {
@@ -23,6 +25,8 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    position: absolute;
+    z-index: 9;
   }
   
   .sidenav-menu.active {
@@ -61,7 +65,8 @@
   }
   
   .sidenav-text a:hover {
-    background-color: #1a83ff;
+    /* background-color: #1a83ff; */
+    background-color: #3BBA9C;
   }
   
   .sidenav-menu-items {
