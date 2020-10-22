@@ -22,9 +22,10 @@ div.table-title {
    font-weight: 400;
    font-style:normal;
    /* font-family: "Roboto", helvetica, arial, sans-serif; */
-   font-family: 'Homemade Apple', cursive;
+   /* font-family: 'Homemade Apple', cursive; */
+   font-family: 'Nunito', sans-serif;
    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-   text-transform:uppercase;
+   /* text-transform:uppercase; */
 }
 
 
