@@ -17,10 +17,10 @@ const currencyFormat = (num) =>{
                             <tr>
                                 <th className="text-left">ID</th>
                                 <th className="text-left">Name</th>
-                                <th className="text-left">Start Date:</th>
-                                <th className="text-left">Due Date:</th>
-                                <th className="text-left">Status:</th>
-                                <th className="text-left">Remaining balance:</th>
+                                <th style={{width:'20%'}} className="text-left">Start Date:</th>
+                                <th style={{width:'20%'}} className="text-left">Due Date:</th>
+                                <th style={{width:'10%'}}className="text-left">Status:</th>
+                                <th style={{width:'10%'}}className="text-left">Remaining balance:</th>
                             </tr>
                     </thead>
 
@@ -28,8 +28,8 @@ const currencyFormat = (num) =>{
                             {projects?.map(project => (
                                 <tr key={project.id}>
                                     <td className="text-left">{project.id}</td>
-                                    <NavLink to={`/projects/${project.id}`} >
-                                    <td className="text-left">{project.name}</td>
+                                    <NavLink style={{ textDecoration: 'none' }} to={`/projects/${project.id}`} >
+                                    <td style={{height:'88px', width:'400px'}}className="text-left">{project.name}</td>
                                     </NavLink>
                                     <td className="text-left">{moment(project.start).format("MMMM Do YYYY")}{" "}</td>
                                     <td className="text-left">{moment(project.end).format("MMMM Do YYYY")}{" "}</td>

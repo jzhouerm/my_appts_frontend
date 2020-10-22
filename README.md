@@ -66,3 +66,6 @@ https://www.sitepoint.com/managing-dates-times-using-moment-js/
 
 re-charts example guide
 https://github.com/jerairrest/react-chartjs-2/blob/master/example/src/components/line.js
+
+Login
+https://medium.com/@aswinvp/a-mock-login-form-using-react-material-ui-754cdad0a9e8

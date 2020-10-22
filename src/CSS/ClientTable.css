@@ -17,13 +17,15 @@ div.table-title {
 }
 
 .table-title h3 {
-   color: #fafafa;
+   color: black;
    font-size: 30px;
    font-weight: 400;
    font-style:normal;
-   font-family: "Roboto", helvetica, arial, sans-serif;
+   /* font-family: "Roboto", helvetica, arial, sans-serif; */
+   /* font-family: 'Homemade Apple', cursive; */
+   font-family: 'Nunito', sans-serif;
    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-   text-transform:uppercase;
+   /* text-transform:uppercase; */
 }
 
 
@@ -44,7 +46,8 @@ div.table-title {
  
 th {
   color:#D5DDE5;;
-  background:#1b1e24;
+  /* background:#1b1e24; */
+  background:#060b26;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:23px;
@@ -61,12 +64,14 @@ th:first-child {
  
 th:last-child {
   border-top-right-radius:3px;
-  border-right:none;
+  border-right: 1px solid #343a45;
+
+  /* border-right:none; */
 }
   
 tr {
   border-top: 1px solid #C1C3D1;
-  border-bottom-: 1px solid #C1C3D1;
+  /* border-bottom-: 1px solid #C1C3D1; */
   color:#666B85;
   font-size:16px;
   font-weight:normal;
@@ -81,13 +86,17 @@ tr:hover td {
  
 tr:first-child {
   border-top:none;
+  
 }
 
 tr:last-child {
+  border-right: 1px solid #343a45;
+
   border-bottom:none;
 }
  
 tr:nth-child(odd) td {
+  
   background:#EBEBEB;
 }
  
@@ -96,6 +105,7 @@ tr:nth-child(odd):hover td {
 }
 
 tr:last-child td:first-child {
+  
   border-bottom-left-radius:3px;
 }
  
@@ -112,10 +122,13 @@ td {
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
+  border-left: 1px solid #C1C3D1;
+
 }
 
 td:last-child {
   border-right: 0px;
+  border-right: 1px solid #C1C3D1;
 }
 
 th.text-left {

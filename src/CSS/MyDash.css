@@ -2,59 +2,95 @@
     display: flex;
     flex-direction: row;
     /* background-color: black; */
-    justify-content: space-between;
+    justify-content: space-around;
+    /* justify-content: space-evenly; */
     flex-wrap: wrap;
     text-align:center;
-    padding: 50px;
+    padding: 30px;
 
 }
+
+.dash-header{
+   align-self: center;
+
+    width: 100%;
+    height: 10vh;
+    margin: 0%;
+    padding: 20px;
+    /* border-style: outset; */
+    border: 2px;
+    border-style: ridge;
+}
+
+/* bar graph */
+.graph{
+    background-color: white;
+    width: 80%;
+    height: 48vh;
+    margin: 2%;
+    padding: 20px;
+    /* border-style: outset; */
+    border: 2px;
+    border-radius: 6px;
+    border-style: ridge;
+    opacity: .9;
+
+}
+.chartjs-render-monitor{
+    
+    padding: 10px;
+}
+
+
 /* Health chart */
-.first-item{
+.box-1{
     /* background-color: blue; */
-    width: 47%; 
-    height: 30vh;
+    border: 2px;
+    border-style: ridge;
+
+    width: 80%; 
+    /* width: 47%;  */
+
+    height: 100%;
     padding: 20px;
 }
+
+/* remove width completely if adding box 2 */
 .health-table{
+    height: 100%;
+    width: 100%; 
+    overflow-y: auto;
     padding: 15px;
 }
 
-
-
-.second-item{
-    /* background-color: yellow; */
-    width: 47%;
-    height: 30vh;
-    padding: 20px;
-}
-.chartjs-render-monitor{
-    padding: 25px;
-}
-
-.third-item{
+.bottom-container{
+    display: flex;
+    flex-direction: row;
     /* background-color: red; */
-    width: 2%; 
+    width: 90%; 
+    justify-content: space-around;
     height: 30vh;
 }
 
-.fourth-item{
-    /* background-color: blue; */
+/* .box-2{
+    background-color: blue;
+    border: 2px;
+    border-style: ridge;
     width: 47%; 
-    height: 30vh;
+    height: 150%;
     padding: 20px;
 
-}
+} */
 
 .fifth-item{
     /* background-color: yellow; */
     width: 2%;
-    height: 30vh;
+    height: 100%;
 }
 
-/* bar graph */
 .sixth-item{
 /* background-color: red; */
-width: 47%; 
+width: 50%; 
 height: 30vh;
-padding: 20px;
+padding: 10px;
 }

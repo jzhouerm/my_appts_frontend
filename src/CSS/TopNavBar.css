@@ -7,8 +7,8 @@
   --brightred: #34F5C5;
   --darkpurple: #002984;
   --white: #fff;
-  /* --lightred: #f9433dcc; */
-  --lightred: #3BBA9C;
+  /* --darkred: #f9433dcc; */
+  --darkteal: #3BBA9C;
 }
 
 
@@ -79,13 +79,13 @@
 
 .nav-links:hover {
   text-decoration: none;
-  color: var(--lightred);
+  color: var(--darkteal);
   transition: all 0.2s ease-out;
 }
 
 .nav-links-btn {
   text-decoration: none;
-  background-color: var(--lightred);
+  background-color: var(--darkteal);
   padding: 6px 16px;
   border-radius: 4px;
 }
@@ -96,7 +96,7 @@ background-color: transparent;
 color: var(--white);
 padding: 5px 15px;
 border-radius: 4px;
-border: solid 1px var(--brightred);
+border: solid 1px var(--darkteal);
 transition: all 0.3s ease-out;
 }
 
@@ -115,10 +115,10 @@ transition: all 0.3s ease-out;
 
   .nav-menu {
     display: grid;
-    /* grid-template-columns:auto; */
-    /* grid-column-end: 3; */
+    /* grid-template-columns:auto;
+    grid-column-end: 3; */
     
-    background: var(--brightred);
+    background: var(--darkteal);
     margin:0;
     width: 100%;
     position: absolute;
@@ -132,14 +132,14 @@ transition: all 0.3s ease-out;
   #nav-menu.active {
     background: var(--darkblue);
     left: 0;
-    opacity: 1;
+    opacity: .2;
     transition: all 0.5s ease;
   }
 
   .nav-links:hover {
   text-decoration: none;
 
-    background-color: var(--brightred);
+    background-color: var(--darkteal);
     color: var(--white);
     transition: all 0.4s ease-out;
   }
@@ -165,7 +165,7 @@ transition: all 0.3s ease-out;
     border: none;
     padding: 0;
     border-radius: 0;
-    background-color: var(--brightred);
+    background-color: var(--darkteal);
     color: var(--white);
     transition: all 0.4s ease-out;
   }

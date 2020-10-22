@@ -85,7 +85,7 @@ export default function UpdateProjectModal(props) {
 
                         <form onSubmit={projectPatchHandler}>
                             <h3>Project Title:</h3>
-                            <p><input className="" name="name" placeholder="Project Title" onChange={projectUpdateChangeHandler} type="text" value={formState.name} /></p>
+                            <p><input width="100px" className="" name="name" placeholder="Project Title" onChange={projectUpdateChangeHandler} type="text" value={formState.name} /></p>
                             <br/>
                             <h3>Description:</h3>
                             <p><textarea rows="5" cols="100" className="" name="description" placeholder="Note/description" onChange={projectUpdateChangeHandler} type="text" value={formState.description}/></p>
@@ -97,11 +97,11 @@ export default function UpdateProjectModal(props) {
                             <p><input className="" name="amount" placeholder="Enter Amount" onChange={projectUpdateChangeHandler} type="number" min="" step="1" max="50000"value={formState.amount}/></p>
                             <br/>
                             <br/>
-                            <Button variant="contained" color="primary" type="submit" onClick={handleClose}>Update Project</Button>
+                            <Button style={{backgroundColor: '#3BBA9C'}} variant="contained" color="primary" type="submit" onClick={handleClose}>Update Project</Button>
                             <br/>
                         </form>
                             <br/>
-                            <Button variant="contained" color="primary" onClick={handleClose}>Cancel</Button>
+                            <Button style={{backgroundColor: '#3BBA9C'}} variant="contained" color="primary" onClick={handleClose}>Cancel</Button>
 
                     </div>
                 </Fade>

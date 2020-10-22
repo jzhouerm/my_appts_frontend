@@ -98,7 +98,7 @@ class ProjectShow extends Component {
         // debugger
         const {userObj, deleteHandler, editHandler} = this.props
         const clicked_id = this.props.match.params.id
-        const project = this.props.userObj.projects.find(project => project.id === parseInt(clicked_id))
+        const project = this.props.userObj?.projects.find(project => project.id === parseInt(clicked_id))
 
         // const classes = useStyles();
         // const [open, setOpen] = React.useState(false);
@@ -130,7 +130,7 @@ class ProjectShow extends Component {
             <div className="pshow-container">
 
                 <div className="project-info-box">
-                    <h3>Project Name: {project.name}</h3><span>{project.name}</span>
+                    <h3>Project Name:</h3><span>{project.name}</span>
                     <h3>Project Description:</h3><span>{project.description}</span>
                 </div>
 
@@ -148,11 +148,11 @@ class ProjectShow extends Component {
                 <span>{moment(project.end).format("MMMM Do YYYY")}</span>
                 </div>
 
-                <div className="client-info-box">
+                <div className="project-info-box">
                 <h3>Client balance:</h3>
                 <span>{"Total Billed: " + currencyFormat(total_balance)}</span>
                 <p>{"Remaining balance due from client:  " + currencyFormat(parseInt(total_balance - amount_paid))}</p>
-                <p>{"Project status: "}</p>
+                <span>{"Project status: "}</span>
                 <span className={project.status ? 'green' : 'red'}><b>{project.status ? "Completed" : "In progress"}</b></span>
                 </div>
 
