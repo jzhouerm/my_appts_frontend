@@ -55,12 +55,22 @@ const ProjectsContainer = (props) => {
             </div>
             <div>
             </div>
-            <div className="new-project-form">
+            <div >
                 <NewProjectModal projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
             </div>
+                <br/>
+                <br/>
+                <br/>
 
             <div className="projects-list">
                 <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
             </div>
 

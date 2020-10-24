@@ -83,9 +83,9 @@ export default function NewProjectModal(props) {
         return props.clientObjs.map(client => <option id="client_id" key={client.id} className="client_name" data-id={client.id} value={client.first_name + " " + client.last_name}> {client.first_name + " " + client.last_name}</option>)
     }
     return (
-        <div>
+        <div className="pink-div">
 
-            <Button variant="contained" style={{backgroundColor: '#3BBA9C'}} onClick={handleOpen}>
+            <Button className="new-project-modal" variant="contained" style={{backgroundColor: '#3BBA9C'}} onClick={handleOpen}>
                 Create Project
             </Button>
 
