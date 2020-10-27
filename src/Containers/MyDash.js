@@ -16,19 +16,24 @@ const test = moment("2020-10-13T18:00:00").format("MMM Do YYYY")
 export default class MyDash extends React.Component {
 
   dayHours = (day) => {
-    const hoursForDay = (this.props.userObj != null ? this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0) : 1)
+    const hoursForDay = (this.props.userObj ? this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0) : 1)
     return hoursForDay
   }
 //Project completion rate
+
   compRate = () => {
     const trueProjects = (this.props.userObj?.projects?.filter(obj => obj.status === true).length)
     const completed = (this.props?.userObj?.projects?.length)
     const percent = (trueProjects/completed)*100
-    return percent
+    return percent.toPrecision(3)
   }
 
   totalBilledArr=() => this.props?.userObj?.projects?.map(obj => obj.amount)  //returns [5000, 5000, 5000, 5000, 5000]
-  totalBilled =()=> {return this.totalBilledArr?.reduce(function(a, b){return a + b;}, 0)}
+  totalBilled =()=> {return this.totalBilledArr()?.reduce(function(a, b){return a + b;}, 0)}
+
+  receivedArr =() => this.props?.userObj?.projects?.map(obj => obj.paid)       
+  receivedTotal=() => {return this.receivedArr()?.reduce(function(a, b){return a + b;}, 0)}
+
   // Oustanding balance from clients 
   receivables = () => {
     const receivedArr = this.props?.userObj?.projects?.map(obj => obj.paid)       
@@ -39,13 +44,23 @@ export default class MyDash extends React.Component {
     return owed
   }
 
+  avgHours = () => {
+   const pastWeek =  [day1, day2, day3, day4, day5, day6, day7]
+   let total = 0;
+   for(let day of pastWeek){
+     total += this.dayHours(day)
+    }
+  return (total/7).toPrecision(3)
+  }
+
+
   render() {
     
-    console.log( "test", (this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day7).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0)))
-    // console.log(this.props.userObj.tasks)
-    // console.log(this.dayHours(day1))
-    
-    // debugger
+    // console.log( "test", (this.props.userObj.tasks?.filter(task => moment(task.start).format("MMM Do YYYY") === day7).map(task => ((new Date(task.end)) -( new Date(task.start))) / 36e5).reduce((a, b) => a + b, 0)))
+    // console.log("daily avg", 
+    // ([this.dayHours(day1), this.dayHours(day2), this.dayHours(day3), this.dayHours(day4), this.dayHours(day5), this.dayHours(day6), this.dayHours(day7)].reduce(function(a, b){return a + b;}, 0)/7).toPrecision(3)
+    // )
+    console.log("avgHours", this.avgHours())
     return (
       <>
       <div className="maindisplay-container">
@@ -100,17 +115,19 @@ export default class MyDash extends React.Component {
                             </tr>
                             <tr >
                               <td>Accounts Receivable:</td>
-                              <td ><b>${this.receivables()}</b> outstanding
-                              {/* {this.totalBilled()} */}
+                              <td ><b>${this.receivables()}</b> outstanding out of 
+                              {" $" + String(this.totalBilled()).replace(/(.)(?=(\d{3})+$)/g,'$1,')}
                               </td>
                             </tr>
                             <tr >
-                              <td>Progress:</td>
-                              <td >86% of tasks completed</td>
+                              <td>Average Daily Hours:</td>
+                              <td ><b>{this.avgHours()}</b> hours </td>
                             </tr>
                             <tr>
                               <td>Payments:</td>
-                              <td >90% collection rate from client</td>
+                              {/* <td >{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}% collection rate from client</td> */}
+                              <td ><b>{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}</b>% collection rate from client</td>
+
                             </tr>
                           </tbody>
                       </table>
