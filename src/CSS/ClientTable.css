@@ -155,12 +155,7 @@ td.text-right {
   text-align: right;
 }
 
-/* 
-.pink-div{
-  background-color: pink;
-
+.create-project-div {
+  margin: auto;
+  margin-top: 10px;
 }
-.new-project-modal button {
-  background-color: black;
-  justify-self: left;
-} */

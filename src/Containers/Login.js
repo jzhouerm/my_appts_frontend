@@ -46,10 +46,8 @@ const styles = theme => ({
     render() {
         const { classes } = this.props;
     return (
-        // <MuiThemeProvider theme={MyTheme}>
 
-
-    <div>
+    <div className="login-container">
         <Grid container spacing={0} justify="center" direction="row" >
         <Grid item>
         <Grid
@@ -63,7 +61,7 @@ const styles = theme => ({
         variant="elevation"
         elevation={10}
         className="login-background"
-        style={{opacity: '0.8'}}
+        style={{opacity: '0.85'}}
         >
         <Grid item >
         <Typography component="h1" variant="h5" >

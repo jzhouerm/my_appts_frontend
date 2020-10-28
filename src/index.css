@@ -24,8 +24,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("https://images.unsplash.com/photo-1544816736-2920bd9a3a36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80"); */
+  /* net pattern */
   /* background-image: url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80"); */
+  /* flower */
+  /* background-image: url("https://images.unsplash.com/photo-1459664018906-085c36f472af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"); */
+  /* wooden office */
+  /* background-image: url("https://images.unsplash.com/photo-1603673319826-2f109cbf42aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"); */
+  /* laptop */
+  /* background-image: url("https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"); */
+
+
+  
   background-repeat: repeat-y;
 
 }

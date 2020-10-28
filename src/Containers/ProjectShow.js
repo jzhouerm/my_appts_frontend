@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-// import {withRouter} from "react-router-dom";
 import moment from 'moment'
 import UpdateProjectModal from '../Components/UpdateProjectModal'
 
 import TaskTable from '../Components/TaskTable'
-import Chip from '@material-ui/core/Chip';
-import DoneIcon from '@material-ui/icons/Done';
-import { createMuiTheme, withStyles, makeStyles } from '@material-ui/core/styles';
+// import { createMuiTheme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
-import { green, purple } from '@material-ui/core/colors';
+// import { green, purple } from '@material-ui/core/colors';
 import '../CSS/ProjectShow.css'
 
 class ProjectShow extends Component {
@@ -20,9 +17,7 @@ class ProjectShow extends Component {
         project: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)),
         client: this.props.userObj.clients.find(client => client.id === parseInt(this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).client_id)),
         //passed in from updateForm
-        // id: this.props.match.params.id,
         user_id: this.props.userObj.id,
-        // client_id: this.props.userObj.clients.find(client => client.id === parseInt(this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).client_id)).id, 
         name: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).name, 
         description: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).description,
         amount: this.props.userObj.projects.find(project => project.id === parseInt(this.props.match.params.id)).amount,
@@ -38,7 +33,6 @@ class ProjectShow extends Component {
     projectPatchHandler =(formState) => {
         console.log("PROJECT UPDATING", formState)
         const obj = {
-        // id: formState.id,
         user_id: this.state.userObj.id,
         client_id: this.state.client.id, 
         name: formState.name, 
@@ -62,7 +56,6 @@ class ProjectShow extends Component {
         .then(userObj => {
             console.log("projectPatchHandler", userObj)
             this.props.passProject(userObj)
-            // this.setState({ project: patchedProj})
         })
     }
 
@@ -95,21 +88,13 @@ class ProjectShow extends Component {
     render() {
 
         const { classes } = this.props;
-        // debugger
         const {userObj, deleteHandler, editHandler} = this.props
         const clicked_id = this.props.match.params.id
         const project = this.props.userObj?.projects.find(project => project.id === parseInt(clicked_id))
 
-        // const classes = useStyles();
-        // const [open, setOpen] = React.useState(false);
-
         const changeStatus =()=>{
-            // const btn = this.state.btnDisable
-            // this.setState({btnDisable: !btn})
             const status = this.state.status
-            // this.setState({status: !status})
             this.statusHandler(!status, project.id)
-
         }
 
         const loading = ()=> {

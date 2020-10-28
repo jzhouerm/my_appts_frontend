@@ -89,12 +89,18 @@ export default function UpdateProjectModal(props) {
                             <br/>
                             <h3>Description:</h3>
                             <p><textarea rows="5" cols="100" className="" name="description" placeholder="Note/description" onChange={projectUpdateChangeHandler} type="text" value={formState.description}/></p>
+                            <br/>
                             <h3>Start date and time:</h3>
                             <p><input className="" name="start" placeholder="Start Date" onChange={projectUpdateChangeHandler} type="datetime-local" value={formState.start} /></p>
+                            <br/>
                             <h3>End date and time:</h3>
                             <p><input className="" name="end" placeholder="End Date" onChange={projectUpdateChangeHandler} type="datetime-local" value={formState.end}/></p>
+                            <br/>
                             <h3>Fee/Contract Amount:</h3>
                             <p><input className="" name="amount" placeholder="Enter Amount" onChange={projectUpdateChangeHandler} type="number" min="" step="1" max="50000"value={formState.amount}/></p>
+                            <br/>
+                            <h3>Paid up-to-date:</h3>
+                            <p><input className="" name="paid" placeholder="Enter Amount" onChange={projectUpdateChangeHandler} type="number" min="" step="1" max="50000"value={formState.paid}/></p>
                             <br/>
                             <br/>
                             <Button style={{backgroundColor: '#3BBA9C'}} variant="contained" color="primary" type="submit" onClick={handleClose}>Update Project</Button>

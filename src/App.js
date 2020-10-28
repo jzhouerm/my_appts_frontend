@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css'
 import Dashboard from './Containers/Dashboard'
 import TopNavBar from './Containers/TopNavBar'
-// import SearchBar from './Containers/SearchBar';
 import Login from "./Containers/Login";
+import Home from "./Containers/Home";
 // import Register from "./Containers/Register";
 
 
@@ -43,6 +43,11 @@ export default class App extends Component {
 
                 <Route path="/login" render={() => 
                 <Login
+                  loginHandler={this.loginHandler}
+                />} />
+
+                <Route path="/" render={() => 
+                <Home
                   loginHandler={this.loginHandler}
                 />} />
 

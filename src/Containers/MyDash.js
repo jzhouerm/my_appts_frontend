@@ -125,7 +125,6 @@ export default class MyDash extends React.Component {
                             </tr>
                             <tr>
                               <td>Payments:</td>
-                              {/* <td >{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}% collection rate from client</td> */}
                               <td ><b>{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}</b>% collection rate from client</td>
 
                             </tr>
@@ -148,5 +147,3 @@ export default class MyDash extends React.Component {
     );
   }
 }
-
-// https://github.com/jerairrest/react-chartjs-2/blob/master/example/src/components/line.js

@@ -71,10 +71,13 @@ Login
 https://medium.com/@aswinvp/a-mock-login-form-using-react-material-ui-754cdad0a9e8
 
 To do list:
+- number of hours per project
 - client show page
 - add search function
-- add log-in functionality
+<!-- - add log-in toggle -->
 - style pagination
-- option to update project payments
+- past due projects
+- dashboard - on hover, show details
+<!-- - option to update project payments -->
 <!-- - update hard-coded data on dashboard -->
 <!-- - round percentages -->

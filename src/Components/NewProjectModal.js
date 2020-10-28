@@ -103,9 +103,10 @@ export default function NewProjectModal(props) {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2>Create a New Project:</h2>
+                        <h1>Create a New Project:</h1>
 
-                        <form onSubmit={projectSubmitHandler}>
+                        <form className='update-project-form' onSubmit={projectSubmitHandler}>
+                            <br />
                             <h2>Project details:</h2>
                             <br />
                             <h3>Client Name:</h3>
@@ -113,14 +114,19 @@ export default function NewProjectModal(props) {
                                 <option default>Select</option>
                                 {clientName()}
                             </select>
+                            <br />
+                            <h3>Project Title:</h3>
                             <p><input className="" name="name" placeholder="Project Title" onChange={projectChangeHandler} type="text" value={formState.name} /></p>
-
+                            <br />
                             <h3>Start date and time:</h3>
                             <p><input className="" name="start" placeholder="Start Date" onChange={projectChangeHandler} type="datetime-local" value={formState.start} /></p>
+                            <br />
                             <h3>End date and time:</h3>
                             <p><input className="" name="end" placeholder="End Date" onChange={projectChangeHandler} type="datetime-local" value={formState.end}/></p>
+                            <br />
                             <h3>Fee/Contract Amount:</h3>
                             <p><input className="" name="amount" placeholder="Enter Amount" onChange={projectChangeHandler} type="number" min="" step="1" max="50000"value={formState.amount}/></p>
+                            <br />
                             <h3>Notes/description:</h3>
                             <p><textarea rows="5" cols="100" className="" name="description" placeholder="Note/description" onChange={projectChangeHandler} type="text" value={formState.description}/></p>
                             <br/>

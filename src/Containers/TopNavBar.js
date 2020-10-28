@@ -6,6 +6,14 @@ import hex2 from '../Components/hex2.png'
 
 class TopNavBar extends React.Component { 
 
+  state ={
+    login: false
+  }
+
+  changeLogin = () =>{
+    const loginStatus = this.state.login
+    this.setState({login: !loginStatus})
+  }
 
     render() {
       return (
@@ -16,15 +24,12 @@ class TopNavBar extends React.Component {
                 
 
                 <div className="menu-toggle" id="mobile-menu">
-                {/* <NavLink to="/menu" exact><span className="bar">toggle menu</span></NavLink>
-                <NavLink to="/menu" exact><span className="bar">toggle menu</span></NavLink> */}
 
                 </div>
                 <ul className="nav-menu">
-                {/* <NavLink to="/" exact><li className="nav-links">Home</li></NavLink> */}
-                {/* <NavLink to="/contact" exact><li className="nav-links">Contact Us</li></NavLink> */}
-                {/* <NavLink to="/about" exact><li className="nav-links">About</li></NavLink> */}
-                <NavLink style={{ textDecoration: 'none' }} to="/login" exact><li className="nav-links">Log In</li></NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to="/" exact><li className="nav-links">Home</li></NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to="/login" exact><li className="nav-links"onClick={()=>this.changeLogin()}>
+                            {(this.state.login === false) ? "Log in" : "Log out"}</li></NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to="/signup" exact><li className="nav-links nav-links-btn">Sign Up</li></NavLink>
 
                 </ul>

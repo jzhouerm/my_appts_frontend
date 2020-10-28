@@ -22,9 +22,15 @@ console.log("inside clientscontainer", props)
           
           <>
               <div className="table-title">
-                  <h3>My Clients</h3>
               </div>
               <ClientCards clients={currentClients} loading={loading} />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
               <Pagination objectsPerPage={clientsPerPage} totalObjects={clients.length} objects={clients} paginate={paginate}/>
           </>
       )

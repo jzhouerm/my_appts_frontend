@@ -100,13 +100,13 @@ border: solid 1px var(--darkteal);
 transition: all 0.3s ease-out;
 }
 
-.menu-toggle .bar {
+/* .menu-toggle .bar {
   width: 25px;
   height: 3px;
   margin: 5px auto;
   transition: all 0.3s ease-in-out;
   background: var(--white);
-}
+} */
 
 @media screen and (max-width: 768px) {
   .nav-container {
@@ -177,10 +177,10 @@ transition: all 0.3s ease-out;
     transform: translate(5%, 20%);
   }
 
-  .menu-toggle .bar {
+  /* .menu-toggle .bar {
     display: block;
     cursor: pointer;
-  }
+  } */
 
   #mobile-menu.is-active .bar:nth-child(2) {
     opacity: 0;

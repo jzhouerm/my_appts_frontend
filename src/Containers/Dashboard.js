@@ -59,29 +59,6 @@ export default class Dashboard extends Component {
           })
     }
 
-//     deleteHandler =(id, history)=>{
-//       console.log("deletehandler", id)
-// // debugger
-//       fetch(`http://localhost:3000/projects/${id}`, {method: "DELETE"})
-//       return(
-//       history.push("/projects")
-//       )
-//     }
-
-
-
-// deleteHandler =(id, history)=>{
-//   console.log("deletehandler", id)
-// // debugger
-//   fetch(`http://localhost:3000/projects/${id}`, {method: "DELETE"})
-//   .then(res => res.json())
-//   .then(data => 
-//     this.setState({userObj: data}))
-//   return(
-//     history.push("/projects")
-
-//   )
-// }
 
     deleteHandler =(id, history)=>{
       console.log("deletehandler", id)
@@ -91,13 +68,8 @@ export default class Dashboard extends Component {
       .then(data => {
 
         this.setState({userObj: data})
-      return(
-        history.push("/projects")
-  
-        )
-        
+      return(history.push("/projects"))
       })
-
     }
 
     updateTaskHandler = (updatedTask) => {

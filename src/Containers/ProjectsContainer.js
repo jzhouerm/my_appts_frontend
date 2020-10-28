@@ -51,15 +51,12 @@ const ProjectsContainer = (props) => {
         
 
             <div className="table-title">
-                <h3>My Projects</h3>
             </div>
             <div>
             </div>
-            <div >
+            <div className="create-project-div">
                 <NewProjectModal projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
             </div>
-                <br/>
-                <br/>
                 <br/>
 
             <div className="projects-list">
