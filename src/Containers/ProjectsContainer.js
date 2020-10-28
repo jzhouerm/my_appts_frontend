@@ -17,7 +17,7 @@ const ProjectsContainer = (props) => {
     // const [userObj] = useState(props.userObj)
     const [loading, setLoading] = useState([true])
     const [currentPage, setCurrentPage] = useState([1])
-    const[projectsPerPage] = useState(4)   //# of items per page
+    const[projectsPerPage] = useState(7)   //# of items per page
 
     //Change page (pageNumber is passed in from Pagination.js ln 21)
     const paginate = (pageNumber) => setCurrentPage(pageNumber)

@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
     // }
 
     componentDidMount(){
-        fetch("http://localhost:3000/users/3/")                
+        fetch("http://localhost:3000/users/1/")                
           .then(resp => resp.json())      
           .then(userObj => 
             // console.log(userObj))

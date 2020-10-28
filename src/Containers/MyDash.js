@@ -133,7 +133,7 @@ export default class MyDash extends React.Component {
                             <tr>
                               <td>Payments due from clients:</td>
                               <Tippy content="Total payments outstanding from clients">
-                                <td ><b>${this.receivables()}</b> outstanding out of 
+                                <td ><b>{" $" + String(this.receivables()).replace(/(.)(?=(\d{3})+$)/g,'$1,')}</b> outstanding out of 
                                 {" $" + String(this.totalBilled()).replace(/(.)(?=(\d{3})+$)/g,'$1,')}
                                 </td>
                               </Tippy>
