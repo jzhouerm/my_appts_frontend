@@ -29,3 +29,10 @@ min-height: 30vh;
 padding: 100px;
 
 }
+
+.login-logo-name{
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: black;
+  
+}

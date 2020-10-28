@@ -70,14 +70,17 @@ https://github.com/jerairrest/react-chartjs-2/blob/master/example/src/components
 Login
 https://medium.com/@aswinvp/a-mock-login-form-using-react-material-ui-754cdad0a9e8
 
+Tooltip
+https://github.com/atomiks/tippyjs-react
+https://www.youtube.com/watch?v=8y4Dr9jJtF0
+
 To do list:
 - number of hours per project
 - client show page
 - add search function
 <!-- - add log-in toggle -->
-- style pagination
+<!-- - style pagination -->
 - past due projects
-- dashboard - on hover, show details
 <!-- - option to update project payments -->
 <!-- - update hard-coded data on dashboard -->
 <!-- - round percentages -->

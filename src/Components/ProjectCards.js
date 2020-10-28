@@ -20,7 +20,7 @@ const currencyFormat = (num) =>{
                                 <th style={{width:'20%'}} className="text-left">Start Date:</th>
                                 <th style={{width:'20%'}} className="text-left">Due Date:</th>
                                 <th style={{width:'10%'}}className="text-left">Status:</th>
-                                <th style={{width:'10%'}}className="text-left">Remaining balance:</th>
+                                <th style={{width:'10%'}}className="text-left">Balance:</th>
                             </tr>
                     </thead>
 

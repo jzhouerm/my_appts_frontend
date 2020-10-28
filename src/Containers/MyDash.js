@@ -1,6 +1,9 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 import moment from 'moment'
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+import * as FaIcons from 'react-icons/fa';
 import '../CSS/MyDash.css'
 
 
@@ -20,7 +23,6 @@ export default class MyDash extends React.Component {
     return hoursForDay
   }
 //Project completion rate
-
   compRate = () => {
     const trueProjects = (this.props.userObj?.projects?.filter(obj => obj.status === true).length)
     const completed = (this.props?.userObj?.projects?.length)
@@ -65,6 +67,7 @@ export default class MyDash extends React.Component {
       <>
       <div className="maindisplay-container">
         <h1 className="dash-header">My Dashboard</h1>
+        
           <div className="graph">
           <Bar
             data={{
@@ -111,22 +114,29 @@ export default class MyDash extends React.Component {
                           <tbody>
                             <tr>
                               <td>Progress:</td>
-                              <td ><b>{this.compRate()}</b>% of projects completed</td>
+                              <Tippy content="Total percentage of projects completed">
+                                <td ><b>{this.compRate()}</b>% of projects completed</td>
+                              </Tippy>
                             </tr>
                             <tr >
-                              <td>Accounts Receivable:</td>
-                              <td ><b>${this.receivables()}</b> outstanding out of 
-                              {" $" + String(this.totalBilled()).replace(/(.)(?=(\d{3})+$)/g,'$1,')}
-                              </td>
+                              <td>Collection rate:</td>
+                              <Tippy content="Percentage of payments received out of total billed">
+                                <td ><b>{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}</b>% of payments received</td>
+                              </Tippy>
                             </tr>
                             <tr >
-                              <td>Average Daily Hours:</td>
-                              <td ><b>{this.avgHours()}</b> hours </td>
+                              <td>Average Daily Hours Logged:</td>
+                              <Tippy content="Average number of hours logged per day for tasks logged">
+                                <td ><b>{this.avgHours()}</b> hours {"(" + day1 + " through " + day7 + ")"}</td>
+                              </Tippy>
                             </tr>
                             <tr>
-                              <td>Payments:</td>
-                              <td ><b>{((this.receivedTotal()/this.totalBilled())*100).toPrecision(3)}</b>% collection rate from client</td>
-
+                              <td>Payments due from clients:</td>
+                              <Tippy content="Total payments outstanding from clients">
+                                <td ><b>${this.receivables()}</b> outstanding out of 
+                                {" $" + String(this.totalBilled()).replace(/(.)(?=(\d{3})+$)/g,'$1,')}
+                                </td>
+                              </Tippy>
                             </tr>
                           </tbody>
                       </table>
@@ -141,7 +151,8 @@ export default class MyDash extends React.Component {
           </div> */}
 
 
-          
+
+
       </div>
       </>
     );

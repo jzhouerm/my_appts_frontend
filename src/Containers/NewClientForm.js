@@ -36,13 +36,13 @@ export default class NewClientForm extends Component {
                         <h2>Client information:</h2>
                             <br/>
                         <p>First Name: </p>
-                        <input className="" name="first_name" placeholder="First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} />
+                        <input className="" name="first_name" placeholder=" First Name" onChange={this.clientChangeHandler} type="text" value={this.state.first_name} />
                         <p>Last Name:</p>
-                        <input className="" name="last_name" placeholder="Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/>
+                        <input className="" name="last_name" placeholder=" Last Name" onChange={this.clientChangeHandler} type="text" value={this.state.last_name}/>
                         <p>Phone Contact:</p>
-                        <input className="" name="phone" placeholder="Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/>
+                        <input className="" name="phone" placeholder=" Phone number" onChange={this.clientChangeHandler} type="text" value={this.state.phone}/>
                         <p>Email:</p>
-                        <input className="" name="email" placeholder="Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/>
+                        <input className="" name="email" placeholder=" Email" onChange={this.clientChangeHandler} type="text" value={this.state.email}/>
                 
                             <br/>
                             <br/>

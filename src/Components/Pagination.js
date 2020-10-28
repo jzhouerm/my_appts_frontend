@@ -1,7 +1,7 @@
 import React from 'react'
 // import '../CSS/bootstrap-theme.css'
 // import '../CSS/bootstrap-theme.min.css'
-// import '../CSS/Pagination.css'
+import '../CSS/Pagination.css'
 // import '../CSS/bootstrap.min.css'
 
 const Pagination = ({ objectsPerPage, totalObjects, objects, paginate }) => {

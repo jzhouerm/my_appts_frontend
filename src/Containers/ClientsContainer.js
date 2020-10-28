@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import '../CSS/ClientTable.css'
 import ClientCards from '../Components/ClientCards'
 import Pagination from '../Components/Pagination'
+import Button from '@material-ui/core/Button';
+
  
 const ClientsContainer = (props) => {
 console.log("inside clientscontainer", props) 
@@ -20,19 +23,22 @@ console.log("inside clientscontainer", props)
 //   debugger
       return (
           
-          <>
-              <div className="table-title">
+        <div className="projects-container"> 
+              <div className="create-project-div">
+                <NavLink style={{ textDecoration: 'none' }} to="/newclient" exact>
+                    <Button className="new-project-modal" variant="contained" style={{backgroundColor: '#3BBA9C'}}>
+                        New Client
+                    </Button>
+                </NavLink>
               </div>
-              <ClientCards clients={currentClients} loading={loading} />
                 <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-              <Pagination objectsPerPage={clientsPerPage} totalObjects={clients.length} objects={clients} paginate={paginate}/>
-          </>
+              <div className="projects-list">
+                <ClientCards clients={currentClients} loading={loading} />
+                    <br/>
+                <Pagination objectsPerPage={clientsPerPage} totalObjects={clients.length} objects={clients} paginate={paginate}/>
+              </div>
+        </div>
+
       )
         
 }

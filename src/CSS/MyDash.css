@@ -12,14 +12,16 @@
 
 .dash-header{
    align-self: center;
+   text-align: left;
 
-    width: 100%;
-    height: 10vh;
+
+    width: 80%;
+    height: 5vh;
     margin: 0%;
     padding: 20px;
     /* border-style: outset; */
-    border: 2px;
-    border-style: ridge;
+    /* border: 2px; */
+    /* border-style: ridge; */
 }
 
 /* bar graph */
@@ -51,7 +53,7 @@
     width: 80%; 
     /* width: 47%;  */
 
-    height: 100%;
+    height: 120%;
     padding: 20px;
 }
 
@@ -60,7 +62,8 @@
     height: 100%;
     width: 100%; 
     overflow-y: auto;
-    padding: 15px;
+    padding: 30px;
+    /* margin: auto; */
 }
 
 .bottom-container{

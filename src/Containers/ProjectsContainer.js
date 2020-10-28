@@ -17,7 +17,7 @@ const ProjectsContainer = (props) => {
     // const [userObj] = useState(props.userObj)
     const [loading, setLoading] = useState([true])
     const [currentPage, setCurrentPage] = useState([1])
-    const[projectsPerPage] = useState(10)   //# of items per page
+    const[projectsPerPage] = useState(4)   //# of items per page
 
     //Change page (pageNumber is passed in from Pagination.js ln 21)
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
@@ -52,8 +52,6 @@ const ProjectsContainer = (props) => {
 
             <div className="table-title">
             </div>
-            <div>
-            </div>
             <div className="create-project-div">
                 <NewProjectModal projects={props.userObj.projects} clientObjs={clientObjs} userObj={props.userObj} projectSubmitHandler={props.submitProjectHandler}/>
             </div>
@@ -61,13 +59,6 @@ const ProjectsContainer = (props) => {
 
             <div className="projects-list">
                 <ProjectCards userObj={props.userObj} projects={currentProjects} clients={clientObjs}/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
                 {props.userObj.projects ? <Pagination objectsPerPage={projectsPerPage} totalObjects={props.userObj.projects.length} objects={props.userObj.projects} paginate={paginate}/> : null }
             </div>
 

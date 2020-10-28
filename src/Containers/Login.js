@@ -12,6 +12,8 @@ Link,
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import {NavLink, Redirect} from "react-router-dom";
 import '../CSS/Login.css'
+import hex2 from '../Components/hex2.png'
+
 // import MyTheme from '../Components/MyTheme'
 
 const styles = theme => ({
@@ -64,9 +66,13 @@ const styles = theme => ({
         style={{opacity: '0.85'}}
         >
         <Grid item >
-        <Typography component="h1" variant="h5" >
-        Sign in
+        <Typography style={{display:'flex', flexDirection:"row", justifyContent:"center"}} component="h1" variant="h4" >
+            <img  src={hex2} className="logo" alt="hex2" />
         </Typography>
+        <Typography style={{display:'flex', flexDirection:"row", justifyContent:"center"}} component="h1" variant="h4" >
+            <h1 className="login-logo-name">Log into My HQ</h1>
+        </Typography>
+        <br/>
         </Grid>
         <Grid item>
         <form onSubmit={this.handleSubmit} >
