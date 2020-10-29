@@ -3,8 +3,7 @@ import moment from 'moment'
 import {NavLink} from "react-router-dom";
 
 
-const ProjectCards = ({ projects, clientObjs }) => {
-// debugger
+const ProjectCards = ({ projects }) => {
 //getting new data from useEffect in ProjectsContainer
 
 const currencyFormat = (num) =>{

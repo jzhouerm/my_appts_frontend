@@ -3,7 +3,7 @@ import {Bar} from 'react-chartjs-2';
 import moment from 'moment'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import * as FaIcons from 'react-icons/fa';
+// import * as FaIcons from 'react-icons/fa';
 import '../CSS/MyDash.css'
 
 

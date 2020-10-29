@@ -12,7 +12,7 @@ console.log("inside clientscontainer", props)
       const [clients] = useState(props.userObj.clients)
       const [loading] = useState([true])
       const [currentPage, setCurrentPage] = useState([1])
-      const[clientsPerPage] = useState(10)   //# of items per page
+      const[clientsPerPage] = useState(7)   //# of items per page
   
       //Change page (pageNumber is passed in from Pagination.js ln 21)
       const paginate = (pageNumber) => setCurrentPage(pageNumber)

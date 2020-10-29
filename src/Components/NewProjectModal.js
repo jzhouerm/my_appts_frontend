@@ -32,31 +32,14 @@ export default function NewProjectModal(props) {
     };
 
 //setState for form input 
-    const [client_id, setClient_id] = useState()
-    const [name, setName] = useState()
-    const [description, setDescription] = useState()
-    const [amount, setAmount] = useState()
-    const [start, setStart] = useState()
-    const [end, setEnd] = useState()
-    const [client_name, setClient_name] = useState()
+    const [client_id] = useState()
+    const [name] = useState()
+    const [description] = useState()
+    const [amount] = useState()
+    const [start] = useState()
+    const [end] = useState()
+    const [client_name] = useState()
     const [formState, setFormState] = useState({ name, description, amount, start, end, client_id})
-    // const [status] = useState(props.project.status)
-    // const [formState, setFormState] = useState({ name, description, amount, paid, start, end, client_id, status, id })
-    // // console.log("formState", formState)
-    // const projectUpdateChangeHandler = (e) => {
-    //     e.persist()
-    //     setFormState({ ...formState,[e.target.name]: e.target.value})
-        
-    // }
-    
-    // const projectPatchHandler = (e) => {
-    //     e.preventDefault()
-    //     e.persist()
-        
-    //     props.projectPatchHandler(formState)
-
-    // }
-
 
     const projectChangeHandler = (e) => {
         e.persist()

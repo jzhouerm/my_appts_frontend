@@ -4,26 +4,24 @@ Button,
 TextField,
 Grid,
 Paper,
-AppBar,
+// AppBar,
 Typography,
-Toolbar,
+// Toolbar,
 Link,
 } from "@material-ui/core";
-import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+// import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import {NavLink, Redirect} from "react-router-dom";
 import '../CSS/Login.css'
 import hex2 from '../Components/hex2.png'
 
-// import MyTheme from '../Components/MyTheme'
-
-const styles = theme => ({
-    button: {
-      margin: theme.spacing.unit,
-    },
-    input: {
-      display: 'none',
-    },
-  });
+// const styles = theme => ({
+//     button: {
+//       margin: theme.spacing.unit,
+//     },
+//     input: {
+//       display: 'none',
+//     },
+//   });
   
   class Login extends React.Component {
 
@@ -38,7 +36,7 @@ const styles = theme => ({
     }
     handleSubmit(event) {
         event.preventDefault();
-        if (this.state.username == 'j@gmail.com' && this.state.password == '123') {
+        if (this.state.username === 'j@gmail.com' && this.state.password === '123') {
            return <Redirect to="/dashboard"/>
             // this.props.history.push("/dashboard");
         } else {
@@ -69,8 +67,9 @@ const styles = theme => ({
         <Typography style={{display:'flex', flexDirection:"row", justifyContent:"center"}} component="h1" variant="h4" >
             <img  src={hex2} className="logo" alt="hex2" />
         </Typography>
-        <Typography style={{display:'flex', flexDirection:"row", justifyContent:"center"}} component="h1" variant="h4" >
-            <h1 className="login-logo-name">Log into My HQ</h1>
+        <Typography style={{display:'flex', flexDirection:"row", justifyContent:"center"}} component="h1" variant="h4" className="login-logo-name">
+            {/* <h1 className="login-logo-name">Log into My HQ</h1> */}
+            Log into My HQ
         </Typography>
         <br/>
         </Grid>

@@ -1,32 +1,22 @@
 import React, { useState, useEffect} from 'react'
 import '../CSS/ClientTable.css'
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ProjectCards from '../Components/ProjectCards'
 import Pagination from '../Components/Pagination'
 import NewProjectModal from '../Components/NewProjectModal'
-import ProjectShow from './ProjectShow'
-// import ProjectsContainer from './ProjectsContainer';
 
- 
 const ProjectsContainer = (props) => {
     // Get ALL projects and clients from DB to create project/project
     const [clientObjs, setClientObjs] = useState([])
 
     // Get current projects
-    // const [projects, setProjects] = useState([props.userObj.projects])
-    // const [userObj] = useState(props.userObj)
-    const [loading, setLoading] = useState([true])
     const [currentPage, setCurrentPage] = useState([1])
     const[projectsPerPage] = useState(7)   //# of items per page
 
     //Change page (pageNumber is passed in from Pagination.js ln 21)
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
     const indexOfLastProject = currentPage * projectsPerPage      //1 X 10
     const indexOfFirstProject = indexOfLastProject - projectsPerPage  
     const currentProjects = props.userObj.projects?.slice(indexOfFirstProject, indexOfLastProject)  //get state of current projects and pass in
-
-    // console.log("currentProjects: ", currentProjects)
 
     useEffect( () => {
         async function fetchData() {
@@ -42,9 +32,7 @@ const ProjectsContainer = (props) => {
             // .then(projects => setProjects(projects))
         }fetchData()
     }, [])
-
    
-    // console.log(props.userObj.projects)
     return (
         
         <div className="projects-container"> 
